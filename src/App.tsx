@@ -1,8 +1,14 @@
 import { ReactElement } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const App = (): ReactElement => {
-  return <CssBaseline></CssBaseline>;
+  const queryClient = new QueryClient();
+  return (
+    <QueryClientProvider client={queryClient}>
+      <CssBaseline></CssBaseline>
+    </QueryClientProvider>
+  );
 };
 
 export default App;
