@@ -13,7 +13,7 @@ const RandomBeer = ({ beer }: RandomBeerProps): ReactElement => {
     <RandomBeerStyled component="article">
       <h3>{name}</h3>
       <div className="beer__body">
-        <img src={image_url} alt={name} className="beer__image" />
+        <img src={image_url} alt={`${name} beer`} className="beer__image" />
         <p>{description}</p>
       </div>
     </RandomBeerStyled>
