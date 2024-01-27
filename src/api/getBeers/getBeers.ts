@@ -4,8 +4,8 @@ import { beersEndpoint } from "../apiEndpoints";
 import { ApiBeersResponse } from "../../types/types";
 
 interface GetBeersParams {
-  beer_name: string;
-  brewed_before: string;
+  beer_name?: string;
+  brewed_before?: string;
 }
 
 const getBeers = async (params?: GetBeersParams) => {
