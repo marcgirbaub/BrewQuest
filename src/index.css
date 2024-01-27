@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  background-color: red;
 }
 
 h1,
@@ -29,10 +30,4 @@ p {
 
 input {
   outline: none;
-}
-
-a,
-:visited {
-  text-decoration: none;
-  color: inherit;
 }
