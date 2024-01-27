@@ -9,7 +9,7 @@ const RandomBeerStyled = styled(Box)`
   align-items: center;
   gap: 0.25rem;
 
-  @media only screen and (min-width: ${breakpoints.sm}) {
+  @media only screen and (min-width: ${breakpoints.sm}px) {
     align-items: flex-start;
   }
 
@@ -21,7 +21,7 @@ const RandomBeerStyled = styled(Box)`
       width: 100%;
       gap: 1rem;
 
-      @media only screen and (min-width: ${breakpoints.sm}) {
+      @media only screen and (min-width: ${breakpoints.sm}px) {
         flex-direction: row;
       }
     }
