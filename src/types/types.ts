@@ -36,15 +36,13 @@ export interface BeerResponse {
     unit: string;
   };
   method: {
-    mash_temp: [
-      {
-        temp: {
-          value: number;
-          unit: string;
-        };
-        duration: number;
-      },
-    ];
+    mash_temp: {
+      temp: {
+        value: number;
+        unit: string;
+      };
+      duration: number | null;
+    }[];
     fermentation: {
       temp: {
         value: number;
@@ -54,35 +52,23 @@ export interface BeerResponse {
     twist: string | null;
   };
   ingredients: {
-    malt: [
-      {
-        name: string;
-        amount: {
-          value: number;
-          unit: string;
-        };
-      },
-    ];
-    hops: [
-      {
-        name: string;
-        amount: {
-          value: 17.5;
-          unit: string;
-        };
-        add: string;
-        attribute: string;
-      },
-      {
-        name: string;
-        amount: {
-          value: 15;
-          unit: string;
-        };
-        add: string;
-        attribute: string;
-      },
-    ];
+    malt: {
+      name: string;
+      amount: {
+        value: number;
+        unit: string;
+      };
+    }[];
+    hops: {
+      name: string;
+      amount: {
+        value: number;
+        unit: string;
+      };
+      add: string;
+      attribute: string;
+    }[];
+
     yeast: string;
   };
   food_pairing: string[];
