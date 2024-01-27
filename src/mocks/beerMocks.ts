@@ -20,6 +20,48 @@ export const buzzBeerMock: BeerStructure = {
   ],
 };
 
+export const trashyBlondeBeerMock: BeerStructure = {
+  id: 2,
+  name: "Trashy Blonde",
+  tagline: "You Know You Shouldn't",
+  first_brewed: "04/2008",
+  description:
+    "A titillating, neurotic, peroxide punk of a Pale Ale. Combining attitude, style, substance, and a little bit of low self esteem for good measure; what would your mother say? The seductive lure of the sassy passion fruit hop proves too much to resist. All that is even before we get onto the fact that there are no additives, preservatives, pasteurization or strings attached. All wrapped up with the customary BrewDog bite and imaginative twist.",
+  image_url: "https://images.punkapi.com/v2/2.png",
+  abv: 4.1,
+  ibu: 41.5,
+  ebc: 15,
+  brewers_tips:
+    "Be careful not to collect too much wort from the mash. Once the sugars are all washed out there are some very unpleasant grainy tasting compounds that can be extracted into the wort.",
+  food_pairing: [
+    "Fresh crab with lemon",
+    "Garlic butter dipping sauce",
+    "Goats cheese salad",
+    "Creamy lemon bar doused in powdered sugar",
+  ],
+};
+
+export const berlinerWeisseWithYuzuBeerMock: BeerStructure = {
+  id: 3,
+  name: "Berliner Weisse With Yuzu - B-Sides",
+  tagline: "Japanese Citrus Berliner Weisse.",
+  first_brewed: "11/2015",
+  description:
+    "Japanese citrus fruit intensifies the sour nature of this German classic.",
+  image_url: "https://images.punkapi.com/v2/keg.png",
+  abv: 4.2,
+  ibu: 8,
+  ebc: 8,
+  brewers_tips:
+    "Clean everything twice. All you want is the clean sourness of lactobacillus.",
+  food_pairing: ["Smoked chicken wings", "Miso ramen", "Yuzu cheesecake"],
+};
+
+export const mockListOfBeers: BeerStructure[] = [
+  buzzBeerMock,
+  trashyBlondeBeerMock,
+];
+
 export const mockBeersResponse: ApiBeersResponse = [
   {
     id: 1,

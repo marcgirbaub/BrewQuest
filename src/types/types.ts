@@ -12,6 +12,8 @@ export interface BeerStructure {
   brewers_tips: string;
 }
 
+export type BeersStructure = BeerStructure[];
+
 export interface BeerResponse {
   id: number;
   name: string;
