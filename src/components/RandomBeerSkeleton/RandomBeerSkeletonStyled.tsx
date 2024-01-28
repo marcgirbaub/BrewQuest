@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import { breakpoints } from "../../styles/breakpoints";
 
-const RandomBeerStyled = styled(Box)`
+const RandomBeerSkeletonStyled = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,7 @@ const RandomBeerStyled = styled(Box)`
     gap: 1.5rem;
   }
 
-  .beer {
+  .skeleton {
     &__body {
       display: flex;
       flex-direction: column;
@@ -31,19 +31,11 @@ const RandomBeerStyled = styled(Box)`
     }
 
     &__image {
-      height: 200px;
-      border-radius: 0.5rem;
-      object-fit: contain;
-    }
-
-    &__description {
-      text-align: justify;
-    }
-
-    &__title {
-      text-align: center;
+      @media only screen and (min-width: ${breakpoints.sm}px) {
+        max-width: 200px;
+      }
     }
   }
 `;
 
-export default RandomBeerStyled;
+export default RandomBeerSkeletonStyled;

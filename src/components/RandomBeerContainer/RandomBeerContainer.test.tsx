@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, vi, Mock } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { mockListOfBeers } from "../../mocks/beerMocks";
 import RandomBeerContainer from "./RandomBeerContainer";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
@@ -7,6 +7,10 @@ import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
 vi.mock("../../hooks/useGetBeers/useGetBeers");
 
 describe("Given a RandomBeerContainer component", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   describe("When the useGetBeers hook returns a list of beers", () => {
     beforeEach(() => {
       (useGetBeers as Mock).mockReturnValue({
@@ -46,10 +50,11 @@ describe("Given a RandomBeerContainer component", () => {
     });
   });
 
-  describe("When the useGetBeers hook returns isLoading set to true", () => {
+  describe("When the useGetBeers hook returns isLoading and isFetching set to true", () => {
     beforeEach(() => {
-      (useGetBeers as Mock).mockReturnValue({
+      (useGetBeers as Mock).mockReturnValueOnce({
         isLoading: true,
+        isFetching: true,
         refetch: vi.fn(),
       });
 
@@ -65,6 +70,37 @@ describe("Given a RandomBeerContainer component", () => {
       });
 
       expect(nameHeading).not.toBeInTheDocument();
+    });
+
+    test("Then it should display a skeleton with the loading text", () => {
+      const ariaLabelText = "Loading beer information";
+
+      const loadingText = screen.getByLabelText(ariaLabelText);
+
+      expect(loadingText).toBeInTheDocument();
+    });
+  });
+
+  describe("When the useGetBeer returns a list of 3 beers and the user clicks on the `Another Beer` button", () => {
+    test("Then it should display the name of the second beer in the list and not display the name of the first beer", () => {
+      const mockRefetch = vi.fn();
+      (useGetBeers as Mock).mockReturnValueOnce({
+        beers: mockListOfBeers,
+        isLoading: false,
+        isFetching: false,
+        refetch: mockRefetch,
+      });
+
+      render(<RandomBeerContainer />);
+
+      const button = screen.getByRole("button", { name: "Another Beer" });
+      fireEvent.click(button);
+
+      const firstBeerNameElement = screen.queryByText(mockListOfBeers[0].name);
+      const secondBeerNameElement = screen.getByText(mockListOfBeers[1].name);
+
+      expect(firstBeerNameElement).not.toBeInTheDocument();
+      expect(secondBeerNameElement).toBeInTheDocument();
     });
   });
 });

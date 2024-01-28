@@ -4,6 +4,7 @@ import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
 import RandomBeerContainerStyled from "./RandomBeerContainerStyled";
 import { BeersStructure } from "../../types/types";
 import { Button } from "@mui/material";
+import RandomBeerSkeleton from "../RandomBeerSkeleton/RandomBeerSkeleton";
 
 const beersPerPage = 5;
 const randomBeerIndex = 0;
@@ -56,14 +57,16 @@ const RandomBeerContainer = (): ReactElement => {
     }
   }, [randomBeers]);
 
-  const isDisabled = isFetching;
-
-  if (isLoading) return <div>Loading...</div>;
+  const isDisabled = isFetching || isLoading;
 
   return (
     <RandomBeerContainerStyled elevation={3}>
-      {randomBeers?.length && (
-        <RandomBeer beer={randomBeers[randomBeerIndex]} />
+      {isLoading || isFetching ? (
+        <RandomBeerSkeleton />
+      ) : (
+        randomBeers?.length && (
+          <RandomBeer beer={randomBeers[randomBeerIndex]} />
+        )
       )}
       <div className="actions">
         <Button

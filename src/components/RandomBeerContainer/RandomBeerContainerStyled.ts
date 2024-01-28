@@ -14,6 +14,7 @@ const RandomBeerContainerStyled = styled(Paper)`
     padding: 2rem;
     flex-direction: row;
     justify-content: space-between;
+    gap: 2rem;
   }
 
   .actions {
