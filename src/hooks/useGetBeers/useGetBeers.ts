@@ -2,12 +2,14 @@ import { useQuery } from "@tanstack/react-query";
 import { getBeersQuery } from "../../utils/queryKeys";
 import getBeers from "../../api/getBeers/getBeers";
 import { BeersStructure } from "../../types/types";
+import { useMemo } from "react";
 
 interface UseGetBeersParams {
   beer_name?: string;
   brewed_before?: string;
   page?: number;
   per_page?: number;
+  abv_lt?: number;
 }
 
 interface UseGetBeersStructure {
@@ -21,15 +23,13 @@ interface UseGetBeersStructure {
 
 const useGetBeers = (params?: UseGetBeersParams): UseGetBeersStructure => {
   const { data, isLoading, isError, error, isFetching, isSuccess } = useQuery({
-    queryKey: [getBeersQuery],
+    queryKey: [getBeersQuery, params],
     queryFn: () => getBeers(params),
   });
 
-  let beers: BeersStructure | undefined;
-
-  if (data) {
-    beers = data.map((beer) => {
-      return {
+  const beers = useMemo(() => {
+    if (data) {
+      return data.map((beer) => ({
         name: beer.name,
         image_url: beer.image_url,
         id: beer.id,
@@ -41,9 +41,9 @@ const useGetBeers = (params?: UseGetBeersParams): UseGetBeersStructure => {
         food_pairing: beer.food_pairing,
         ibu: beer.ibu,
         tagline: beer.tagline,
-      };
-    });
-  }
+      }));
+    }
+  }, [data]);
 
   return { beers, isLoading, isError, error, isFetching, isSuccess };
 };
