@@ -18,6 +18,8 @@ const RandomBeer = ({ beer }: RandomBeerProps): ReactElement => {
           src={image_url ?? beerImagePlaceholder}
           alt={`${name} beer`}
           className="beer__image"
+          height={200}
+          width={100}
         />
         <p className="beer__description">{description}</p>
       </div>
