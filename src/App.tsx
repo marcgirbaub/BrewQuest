@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
 import { Box } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RandomBeerContainer from "./components/RandomBeerContainer/RandomBeerContainer";
 import { breakpoints } from "./styles/breakpoints";
+import { ThemeContextProvider } from "./contexts/ThemeContextProvider";
+import Header from "./components/Header/Header";
 
 const App = (): ReactElement => {
   const queryClient = new QueryClient({
@@ -12,7 +13,7 @@ const App = (): ReactElement => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CssBaseline>
+      <ThemeContextProvider>
         <Box
           sx={{
             maxWidth: breakpoints.xl,
@@ -20,9 +21,12 @@ const App = (): ReactElement => {
             margin: "auto",
           }}
         >
-          <RandomBeerContainer />
+          <Header />
+          <div style={{ marginTop: "70px" }}>
+            <RandomBeerContainer />
+          </div>
         </Box>
-      </CssBaseline>
+      </ThemeContextProvider>
     </QueryClientProvider>
   );
 };
