@@ -8,6 +8,7 @@ interface GetBeersParams {
   brewed_before?: string;
   page?: number;
   per_page?: number;
+  abv_lt?: number;
 }
 
 const getBeers = async (params?: GetBeersParams) => {

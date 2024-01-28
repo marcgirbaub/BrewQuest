@@ -14,7 +14,7 @@ const RandomBeer = ({ beer }: RandomBeerProps): ReactElement => {
       <h3>{name}</h3>
       <div className="beer__body">
         <img src={image_url} alt={`${name} beer`} className="beer__image" />
-        <p>{description}</p>
+        <p className="beer__description">{description}</p>
       </div>
     </RandomBeerStyled>
   );

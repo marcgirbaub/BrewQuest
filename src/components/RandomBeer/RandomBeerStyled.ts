@@ -7,7 +7,7 @@ const RandomBeerStyled = styled(Box)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 1rem;
 
   @media only screen and (min-width: ${breakpoints.sm}px) {
     align-items: flex-start;
@@ -18,6 +18,7 @@ const RandomBeerStyled = styled(Box)`
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       width: 100%;
       gap: 1rem;
 
@@ -30,6 +31,10 @@ const RandomBeerStyled = styled(Box)`
       height: 200px;
       border-radius: 0.5rem;
       object-fit: contain;
+    }
+
+    &__description {
+      text-align: justify;
     }
   }
 `;
