@@ -14,7 +14,7 @@ const RandomBeerSkeletonStyled = styled(Box)`
     gap: 1.5rem;
   }
 
-  .beer {
+  .skeleton {
     &__body {
       display: flex;
       flex-direction: column;
@@ -31,7 +31,9 @@ const RandomBeerSkeletonStyled = styled(Box)`
     }
 
     &__image {
-      height: 200px;
+      @media only screen and (min-width: ${breakpoints.sm}px) {
+        max-width: 200px;
+      }
     }
   }
 `;

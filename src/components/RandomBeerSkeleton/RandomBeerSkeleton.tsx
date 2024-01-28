@@ -7,10 +7,16 @@ const RandomBeerSkeleton = () => {
       component="article"
       width="100%"
       sx={{ maxWidth: "100" }}
+      aria-label="Loading beer information"
     >
       <Skeleton variant="text" width={"100%"} height={30} />
-      <div className="beer__body">
-        <Skeleton variant="rectangular" width="100%" height={200} />
+      <div className="skeleton__body">
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          height={200}
+          className="skeleton__image"
+        />
         <div style={{ width: "100%" }}>
           <Skeleton variant="text" animation="wave" width="100%" />
           <Skeleton variant="text" animation="wave" width="100%" />

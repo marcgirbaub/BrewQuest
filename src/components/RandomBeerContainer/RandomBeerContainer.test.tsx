@@ -50,15 +50,19 @@ describe("Given a RandomBeerContainer component", () => {
     });
   });
 
-  describe("When the useGetBeers hook returns isLoading set to true", () => {
-    test("Then it should not display a title heading with then name of the first beer `Buzz`", () => {
+  describe("When the useGetBeers hook returns isLoading and isFetching set to true", () => {
+    beforeEach(() => {
       (useGetBeers as Mock).mockReturnValueOnce({
         isLoading: true,
+        isFetching: true,
         refetch: vi.fn(),
       });
 
-      const beerName = mockListOfBeers[0].name;
       render(<RandomBeerContainer />);
+    });
+
+    test("Then it should not display a title heading with then name of the first beer `Buzz`", () => {
+      const beerName = mockListOfBeers[0].name;
 
       const nameHeading = screen.queryByRole("heading", {
         name: beerName,
@@ -66,6 +70,14 @@ describe("Given a RandomBeerContainer component", () => {
       });
 
       expect(nameHeading).not.toBeInTheDocument();
+    });
+
+    test("Then it should display a skeleton with the loading text", () => {
+      const ariaLabelText = "Loading beer information";
+
+      const loadingText = screen.getByLabelText(ariaLabelText);
+
+      expect(loadingText).toBeInTheDocument();
     });
   });
 

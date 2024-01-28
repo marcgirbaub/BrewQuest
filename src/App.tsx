@@ -15,7 +15,7 @@ const App = (): ReactElement => {
       <CssBaseline>
         <Box
           sx={{
-            maxWidth: breakpoints.lg,
+            maxWidth: breakpoints.xl,
             padding: "1rem",
             margin: "auto",
           }}
