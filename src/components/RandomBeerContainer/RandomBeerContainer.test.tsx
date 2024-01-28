@@ -12,6 +12,7 @@ describe("Given a RandomBeerContainer component", () => {
       (useGetBeers as Mock).mockReturnValue({
         beers: mockListOfBeers,
         isLoading: false,
+        refetch: vi.fn(),
       });
 
       render(<RandomBeerContainer />);
@@ -49,6 +50,7 @@ describe("Given a RandomBeerContainer component", () => {
     beforeEach(() => {
       (useGetBeers as Mock).mockReturnValue({
         isLoading: true,
+        refetch: vi.fn(),
       });
 
       render(<RandomBeerContainer />);
