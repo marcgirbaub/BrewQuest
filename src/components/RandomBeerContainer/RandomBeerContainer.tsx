@@ -77,7 +77,7 @@ const RandomBeerContainer = (): ReactElement => {
         </>
       )}
       {isLoadingOrFetching && <RandomBeerSkeleton />}
-      {hasBeers && <RandomBeer beer={randomBeers![randomBeerIndex]} />}
+      {hasBeers && <RandomBeer beer={randomBeers[randomBeerIndex]} />}
       <div className="actions">
         <Button
           variant="contained"
