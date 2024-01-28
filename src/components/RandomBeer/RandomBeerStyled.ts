@@ -40,7 +40,7 @@ const RandomBeerStyled = styled(Box)`
       text-align: justify;
     }
 
-    &__title {
+    &__name {
       text-align: center;
     }
   }

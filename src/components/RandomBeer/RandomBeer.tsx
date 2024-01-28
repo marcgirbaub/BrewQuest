@@ -16,7 +16,7 @@ const RandomBeer = ({ beer }: RandomBeerProps): ReactElement => {
       <div className="beer__body">
         <img
           src={image_url ?? beerImagePlaceholder}
-          alt={`${name} beer`}
+          alt={image_url ? `${name} beer` : "Beer image not available"}
           className="beer__image"
           height={200}
           width={100}

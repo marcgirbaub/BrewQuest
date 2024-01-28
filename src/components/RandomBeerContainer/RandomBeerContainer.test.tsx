@@ -103,4 +103,22 @@ describe("Given a RandomBeerContainer component", () => {
       expect(secondBeerNameElement).toBeInTheDocument();
     });
   });
+
+  describe("When the useGetBeer hook return isError set to true", () => {
+    test("Then it should display an error message and an image with the alt text `Beer not found`", () => {
+      (useGetBeers as Mock).mockReturnValueOnce({
+        isError: true,
+        refetch: vi.fn(),
+      });
+      const errorMessageText = "Something went wrong, please try again.";
+
+      render(<RandomBeerContainer />);
+
+      const errorMessage = screen.getByText(errorMessageText);
+      const errorImage = screen.getByRole("img", { name: "Beer not found" });
+
+      expect(errorMessage).toBeInTheDocument();
+      expect(errorImage).toBeInTheDocument();
+    });
+  });
 });
