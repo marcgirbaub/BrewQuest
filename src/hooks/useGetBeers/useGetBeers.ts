@@ -31,7 +31,7 @@ interface UseGetBeersStructure {
 const useGetBeers = (params?: UseGetBeersParams): UseGetBeersStructure => {
   const { data, isLoading, isError, error, isFetching, isSuccess, refetch } =
     useQuery({
-      queryKey: [getBeersQuery],
+      queryKey: [getBeersQuery, params],
       queryFn: () => getBeers(params),
     });
 
@@ -57,7 +57,7 @@ const useGetBeers = (params?: UseGetBeersParams): UseGetBeersStructure => {
     }
   }, [data]);
 
-  if (!beers?.length) {
+  if (data?.length && !beers?.length && isSuccess) {
     refetch();
   }
 
