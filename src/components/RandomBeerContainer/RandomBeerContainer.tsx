@@ -3,8 +3,9 @@ import RandomBeer from "../RandomBeer/RandomBeer";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
 import RandomBeerContainerStyled from "./RandomBeerContainerStyled";
 import { BeersStructure } from "../../types/types";
-import { Button } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import RandomBeerSkeleton from "../RandomBeerSkeleton/RandomBeerSkeleton";
+import beerImagePlaceholder from "../../assets/beer-placeholder.png";
 
 const beersPerPage = 5;
 const randomBeerIndex = 0;
@@ -19,7 +20,7 @@ const RandomBeerContainer = (): ReactElement => {
     requestedPages: [firstRandomPage],
   });
 
-  const { beers, isLoading, refetch, isFetching } = useGetBeers({
+  const { beers, isLoading, refetch, isFetching, isError } = useGetBeers({
     page: pageState.currentPage,
     per_page: beersPerPage,
   });
@@ -57,26 +58,35 @@ const RandomBeerContainer = (): ReactElement => {
     }
   }, [randomBeers]);
 
-  const isDisabled = isFetching || isLoading;
+  const isLoadingOrFetching = isLoading || isFetching;
+  const hasBeers = randomBeers?.length && !isError && !isLoadingOrFetching;
 
   return (
     <RandomBeerContainerStyled elevation={3}>
-      {isLoading || isFetching ? (
-        <RandomBeerSkeleton />
-      ) : (
-        randomBeers?.length && (
-          <RandomBeer beer={randomBeers[randomBeerIndex]} />
-        )
+      {isError && (
+        <>
+          <Alert severity="error">
+            Something went wrong, please try again.
+          </Alert>
+          <img
+            src={beerImagePlaceholder}
+            alt="Beer not found"
+            height={200}
+            width={100}
+          />
+        </>
       )}
+      {isLoadingOrFetching && <RandomBeerSkeleton />}
+      {hasBeers && <RandomBeer beer={randomBeers![randomBeerIndex]} />}
       <div className="actions">
         <Button
           variant="contained"
           onClick={handleAnotherBeer}
-          disabled={isDisabled}
+          disabled={isLoadingOrFetching}
         >
           Another Beer
         </Button>
-        <Button variant="outlined" disabled={isDisabled}>
+        <Button variant="outlined" disabled={isLoadingOrFetching}>
           Random non alcoholic Beer
         </Button>
       </div>
