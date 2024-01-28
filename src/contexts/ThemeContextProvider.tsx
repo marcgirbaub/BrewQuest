@@ -1,4 +1,11 @@
-import { ReactElement, createContext, useMemo, useState } from "react";
+import {
+  ReactElement,
+  createContext,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { ThemeMode, buildThemeOptions } from "../styles/themeOptions";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
@@ -19,13 +26,33 @@ interface ThemeContextProviderProps {
 export const ThemeContextProvider = ({
   children,
 }: ThemeContextProviderProps): ReactElement => {
-  const [usedTheme, setUsedTheme] = useState<ThemeMode>("light");
+  const prefersDarkMode =
+    window &&
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const toggleTheme = () => {
+  const [usedTheme, setUsedTheme] = useState<ThemeMode>(() => {
+    if (typeof window !== "undefined") {
+      const localStorageTheme = window.localStorage.getItem("theme");
+
+      if (localStorageTheme) {
+        return localStorageTheme as ThemeMode;
+      }
+    }
+
+    return prefersDarkMode ? "dark" : "light";
+  });
+
+  const toggleTheme = useCallback(() => {
     setUsedTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
+  }, []);
 
-  console.log("usedTheme", usedTheme);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("theme", usedTheme);
+    }
+  }, [usedTheme]);
+
   const theme = createTheme(buildThemeOptions(usedTheme));
 
   const store = useMemo(
@@ -33,7 +60,7 @@ export const ThemeContextProvider = ({
       theme: usedTheme,
       toggleTheme,
     }),
-    [usedTheme],
+    [toggleTheme, usedTheme],
   );
 
   return (

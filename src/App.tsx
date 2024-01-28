@@ -14,17 +14,16 @@ const App = (): ReactElement => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeContextProvider>
+        <Header />
         <Box
           sx={{
             maxWidth: breakpoints.xl,
             padding: "1rem",
             margin: "auto",
+            marginTop: "70px",
           }}
         >
-          <Header />
-          <div style={{ marginTop: "70px" }}>
-            <RandomBeerContainer />
-          </div>
+          <RandomBeerContainer />
         </Box>
       </ThemeContextProvider>
     </QueryClientProvider>

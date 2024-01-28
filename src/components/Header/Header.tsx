@@ -5,7 +5,7 @@ import { ThemeContext } from "../../contexts/ThemeContextProvider";
 import HeaderStyled from "./HeaderStyled";
 
 const Header = (): ReactElement => {
-  const { toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme, theme } = useContext(ThemeContext);
 
   return (
     <HeaderStyled position="fixed">
@@ -13,7 +13,7 @@ const Header = (): ReactElement => {
         <h1 className="header__title">BrewQuest</h1>
         <div className="header__dark-mode">
           <DarkModeIcon />
-          <Switch onChange={toggleTheme} />
+          <Switch onChange={toggleTheme} checked={theme === "dark"} />
         </div>
       </div>
     </HeaderStyled>
