@@ -36,6 +36,10 @@ const RandomBeerStyled = styled(Box)`
     &__description {
       text-align: justify;
     }
+
+    &__title {
+      text-align: center;
+    }
   }
 `;
 
