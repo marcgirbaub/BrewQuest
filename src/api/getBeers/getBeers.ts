@@ -3,9 +3,9 @@ import apiClient from "../apiClient";
 import { beersEndpoint } from "../apiEndpoints";
 import { ApiBeersResponse } from "../../types/types";
 
-interface GetBeersParams {
-  beer_name?: string;
-  brewed_before?: string;
+export interface GetBeersParams {
+  beer_name?: string | null;
+  brewed_before?: string | null;
   page?: number;
   per_page?: number;
   abv_lt?: number;

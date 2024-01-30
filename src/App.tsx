@@ -7,10 +7,13 @@ import RandomBeerContainer from "./components/RandomBeerContainer/RandomBeerCont
 import { breakpoints } from "./styles/breakpoints";
 import { ThemeContextProvider } from "./contexts/ThemeContextProvider";
 import Header from "./components/Header/Header";
+import SearchContainer from "./components/SearchContainer/SearchContainer";
 
 const App = (): ReactElement => {
   const queryClient = new QueryClient({
-    defaultOptions: { queries: { refetchOnWindowFocus: false } },
+    defaultOptions: {
+      queries: { refetchOnWindowFocus: false },
+    },
   });
 
   return (
@@ -21,12 +24,16 @@ const App = (): ReactElement => {
           <Box
             sx={{
               maxWidth: breakpoints.xl,
-              padding: "1rem",
+              padding: "2rem",
               margin: "auto",
               marginTop: "70px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "2rem",
             }}
           >
             <RandomBeerContainer />
+            <SearchContainer />
           </Box>
         </ThemeContextProvider>
       </LocalizationProvider>
