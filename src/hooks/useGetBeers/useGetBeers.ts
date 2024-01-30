@@ -4,18 +4,11 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { getBeersQuery } from "../../utils/queryKeys";
-import getBeers from "../../api/getBeers/getBeers";
+import getBeers, { GetBeersParams } from "../../api/getBeers/getBeers";
 import { ApiBeersResponse, BeersStructure } from "../../types/types";
 import { useMemo } from "react";
 
-interface UseGetBeersParams {
-  beer_name?: string;
-  brewed_before?: string;
-  page?: number;
-  per_page?: number;
-  abv_lt?: number;
-}
-
+type UseGetBeersParams = GetBeersParams;
 interface UseGetBeersStructure {
   beers: BeersStructure | undefined;
   isLoading: boolean;
@@ -25,14 +18,20 @@ interface UseGetBeersStructure {
   isSuccess: boolean;
   refetch: (
     options?: RefetchOptions | undefined,
-  ) => Promise<QueryObserverResult<ApiBeersResponse, Error>>;
+  ) => Promise<QueryObserverResult<ApiBeersResponse | null, Error>>;
 }
 
 const useGetBeers = (params?: UseGetBeersParams): UseGetBeersStructure => {
   const { data, isLoading, isError, error, isFetching, isSuccess, refetch } =
     useQuery({
-      queryKey: [getBeersQuery, params],
-      queryFn: () => getBeers(params),
+      queryKey: [getBeersQuery, params?.page, params?.abv_lt],
+      queryFn: () => {
+        if (params?.beer_name === null) {
+          return null;
+        }
+
+        return getBeers(params);
+      },
     });
 
   const beers = useMemo(() => {
