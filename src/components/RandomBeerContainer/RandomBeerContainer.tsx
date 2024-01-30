@@ -10,7 +10,7 @@ import beerImagePlaceholder from "../../assets/beer-placeholder.png";
 const beersPerPage = 5;
 const randomBeerIndex = 0;
 const numberOfApiBeers = 325;
-const maxNumberOfPages = numberOfApiBeers / beersPerPage;
+const maxNumberOfPages = Math.ceil(numberOfApiBeers / beersPerPage);
 const firstRandomPage = Math.floor(Math.random() * maxNumberOfPages) + 1;
 const abvParameter = 1;
 
@@ -60,6 +60,12 @@ const RandomBeerContainer = (): ReactElement => {
   }, [beers]);
 
   useEffect(() => {
+    if (isError) {
+      setRandomBeers([]);
+    }
+  }, [isError]);
+
+  useEffect(() => {
     refetch();
   }, [pageState.currentPage, refetch]);
 
@@ -69,6 +75,14 @@ const RandomBeerContainer = (): ReactElement => {
     } else {
       setPageState((prevState) => {
         let newPage;
+
+        if (prevState.requestedPages.length === maxNumberOfPages) {
+          return {
+            ...prevState,
+            currentPage: firstRandomPage,
+            requestedPages: [firstRandomPage],
+          };
+        }
 
         do {
           newPage = Math.floor(Math.random() * maxNumberOfPages) + 1;
@@ -98,19 +112,28 @@ const RandomBeerContainer = (): ReactElement => {
   }, [nonAlcoholicBeers, nonAlcoholicBeerIndex]);
 
   const isLoadingOrFetching = isLoading || isFetching || isNonAlcoholicFetching;
-  const hasBeers = randomBeers?.length && !isError && !isLoadingOrFetching;
+  const hasBeers = randomBeers?.length && !isLoadingOrFetching;
+  const isErrorAndNoBeers = isError && !hasBeers;
+  const isNonAlcoholicErrorOrNoBeers =
+    isNonAlcoholicError ||
+    (!nonAlcoholicBeers?.length && !hasBeers && !isLoadingOrFetching);
+  const hasBeersAndNotLoading = hasBeers === true;
 
   return (
     <RandomBeerContainerStyled elevation={3}>
-      {isError && (
+      {isErrorAndNoBeers ? (
         <BeerErrorFeedback errorMessage="Something went wrong, please try again." />
+      ) : (
+        <>
+          {isNonAlcoholicErrorOrNoBeers && (
+            <BeerErrorFeedback errorMessage="Something went wrong with fetching non-alcoholic beer, please try again." />
+          )}
+          {isLoadingOrFetching && <RandomBeerSkeleton />}
+          {hasBeersAndNotLoading && (
+            <RandomBeer beer={randomBeers[randomBeerIndex]} />
+          )}
+        </>
       )}
-      {isNonAlcoholicError ||
-        (!nonAlcoholicBeers?.length && !hasBeers && !isLoadingOrFetching && (
-          <BeerErrorFeedback errorMessage="Something went wrong with fetching non-alcoholic beer, please try again." />
-        ))}
-      {isLoadingOrFetching && <RandomBeerSkeleton />}
-      {hasBeers === true && <RandomBeer beer={randomBeers[randomBeerIndex]} />}
       <div className="actions">
         <Button
           variant="contained"

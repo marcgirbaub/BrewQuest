@@ -27,7 +27,7 @@ describe("Given a RandomBeerContainer component", () => {
 
       const nameHeading = screen.getByRole("heading", {
         name: beerName,
-        level: 3,
+        level: 2,
       });
 
       expect(nameHeading).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe("Given a RandomBeerContainer component", () => {
 
   describe("When the useGetBeers hook returns isLoading and isFetching set to true", () => {
     beforeEach(() => {
-      (useGetBeers as Mock).mockReturnValueOnce({
+      (useGetBeers as Mock).mockReturnValue({
         isLoading: true,
         isFetching: true,
         refetch: vi.fn(),
@@ -66,7 +66,7 @@ describe("Given a RandomBeerContainer component", () => {
 
       const nameHeading = screen.queryByRole("heading", {
         name: beerName,
-        level: 3,
+        level: 2,
       });
 
       expect(nameHeading).not.toBeInTheDocument();
@@ -84,7 +84,7 @@ describe("Given a RandomBeerContainer component", () => {
   describe("When the useGetBeer returns a list of 3 beers and the user clicks on the `Another Beer` button", () => {
     test("Then it should display the name of the second beer in the list and not display the name of the first beer", () => {
       const mockRefetch = vi.fn();
-      (useGetBeers as Mock).mockReturnValueOnce({
+      (useGetBeers as Mock).mockReturnValue({
         beers: mockListOfBeers,
         isLoading: false,
         isFetching: false,
@@ -106,8 +106,11 @@ describe("Given a RandomBeerContainer component", () => {
 
   describe("When the useGetBeer hook return isError set to true", () => {
     test("Then it should display an error message and an image with the alt text `Beer not found`", () => {
-      (useGetBeers as Mock).mockReturnValueOnce({
+      (useGetBeers as Mock).mockReturnValue({
         isError: true,
+        isLoading: false,
+        isFetching: false,
+        beers: [],
         refetch: vi.fn(),
       });
       const errorMessageText = "Something went wrong, please try again.";
