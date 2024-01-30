@@ -8,11 +8,7 @@ import {
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import FiltersStyled from "./FiltersStyled";
-
-export interface BeerFiltersState {
-  type: "name" | "date";
-  value: string | null;
-}
+import { BeerFiltersState } from "../SearchContainer/SearchContainer";
 
 interface FiltersProps {
   filters: BeerFiltersState;
