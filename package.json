@@ -17,8 +17,10 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.6",
     "@mui/material": "^5.15.6",
+    "@mui/x-date-pickers": "^6.19.2",
     "@tanstack/react-query": "^5.17.19",
     "axios": "^1.6.7",
+    "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
