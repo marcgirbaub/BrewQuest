@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useState } from "react";
 import Filters from "../Filters/Filters";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
-import { CircularProgress } from "@mui/material";
+import { Alert, CircularProgress } from "@mui/material";
 import BeerCard from "../BeerCard/BeerCard";
 import SearchContainerStyled from "./SearchContainerStyled";
 
@@ -23,7 +23,7 @@ const SearchContainer = (): ReactElement => {
       ? { beer_name: filters.value }
       : { brewed_before: filters.value };
 
-  const { beers, isFetching, isLoading, refetch } =
+  const { beers, isFetching, isLoading, refetch, isError } =
     useGetBeers(queryParameters);
 
   const isLoadingOrFetching = isLoading || isFetching;
@@ -70,6 +70,19 @@ const SearchContainer = (): ReactElement => {
         isSubmitDisabled={areFiltersEmpty}
       />
       {isLoadingOrFetching && <CircularProgress sx={{ alignSelf: "center" }} />}
+      {isError && (
+        <Alert severity="error">
+          Something went wrong, please try again later!
+        </Alert>
+      )}
+      {!isError &&
+        beers?.length === 0 &&
+        !areFiltersEmpty &&
+        !isLoadingOrFetching && (
+          <Alert sx={{ width: "fit-content" }} severity="info">
+            No beers found with your search criteria.
+          </Alert>
+        )}
       {beers && (
         <ul style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
           {beers.map((beer) => (

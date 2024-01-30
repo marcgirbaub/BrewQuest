@@ -80,4 +80,20 @@ describe("Given a SearchContainer component", () => {
       expect(screen.getByRole("progressbar")).toBeInTheDocument();
     });
   });
+
+  describe("When the useGetBeers hook returns isError set to true", () => {
+    test("Then it should display an error message", () => {
+      (useGetBeers as Mock).mockReturnValueOnce({
+        isError: true,
+        refetch: vi.fn(),
+      });
+      const errorMessageText = "Something went wrong, please try again later!";
+
+      render(<SearchContainer />);
+
+      const errorMessage = screen.getByText(errorMessageText);
+
+      expect(errorMessage).toBeInTheDocument();
+    });
+  });
 });
