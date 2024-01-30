@@ -14,7 +14,7 @@ describe("Given a RandomBeer component", () => {
 
       const nameHeading = screen.getByRole("heading", {
         name: beerName,
-        level: 3,
+        level: 2,
       });
 
       expect(nameHeading).toBeInTheDocument();
