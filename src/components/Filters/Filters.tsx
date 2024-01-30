@@ -18,7 +18,7 @@ interface FiltersProps {
   handleSearch: () => void;
   isSubmitDisabled: boolean;
   handleSwitchFiltersType: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  nameInputError?: string | null;
+  nameInputError: string | null;
 }
 
 const Filters = ({
@@ -92,6 +92,7 @@ const Filters = ({
         className="search-button"
         disabled={isSubmitButtonDisabled}
         onClick={handleSearch}
+        aria-label="Press to search"
       >
         Search
       </Button>
