@@ -7,18 +7,13 @@ const FiltersStyled = styled.form`
   flex-direction: column;
   width: 100%;
 
-  @media only screen and (min-width: ${breakpoints.sm}px) {
-    flex-direction: row;
-    align-items: center;
-  }
-
   .inputs {
     display: flex;
     gap: 1rem;
     flex-direction: column;
 
     @media only screen and (min-width: ${breakpoints.sm}px) {
-      flex-direction: row-reverse;
+      flex-direction: row;
     }
 
     &__name,
@@ -29,10 +24,6 @@ const FiltersStyled = styled.form`
         max-width: 300px;
       }
     }
-  }
-
-  .search-button {
-    max-height: 42px;
   }
 `;
 

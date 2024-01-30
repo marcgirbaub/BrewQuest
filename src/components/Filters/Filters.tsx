@@ -49,15 +49,15 @@ const Filters = ({
 
   return (
     <FiltersStyled onSubmit={handleOnSubmit}>
+      <RadioGroup row value={filters.type} onChange={handleSwitchFiltersType}>
+        <FormControlLabel control={<Radio />} label="By name" value="name" />
+        <FormControlLabel
+          control={<Radio />}
+          label="By brewed before"
+          value="date"
+        />
+      </RadioGroup>
       <div className="inputs">
-        <RadioGroup row value={filters.type} onChange={handleSwitchFiltersType}>
-          <FormControlLabel control={<Radio />} label="By name" value="name" />
-          <FormControlLabel
-            control={<Radio />}
-            label="By brewed before"
-            value="date"
-          />
-        </RadioGroup>
         {filters.type === "name" ? (
           <TextField
             label="Beer name"
@@ -86,16 +86,15 @@ const Filters = ({
             }}
           />
         )}
+        <Button
+          variant="contained"
+          disabled={isSubmitButtonDisabled}
+          onClick={handleSearch}
+          aria-label="Press to search"
+        >
+          Search
+        </Button>
       </div>
-      <Button
-        variant="contained"
-        className="search-button"
-        disabled={isSubmitButtonDisabled}
-        onClick={handleSearch}
-        aria-label="Press to search"
-      >
-        Search
-      </Button>
     </FiltersStyled>
   );
 };

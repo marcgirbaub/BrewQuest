@@ -58,7 +58,9 @@ describe("Given a SearchContainer component", () => {
       });
       fireEvent.change(inputNameElement, { target: { value: "Ale" } });
 
-      const searchButton = screen.getByRole("button", { name: "Search" });
+      const searchButton = screen.getByRole("button", {
+        name: "Press to search",
+      });
       fireEvent.click(searchButton);
 
       expect(mockRefetch).toHaveBeenCalled();
