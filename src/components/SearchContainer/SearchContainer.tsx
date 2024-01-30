@@ -1,4 +1,5 @@
 import { ReactElement, useCallback, useState } from "react";
+import dayjs from "dayjs";
 import Filters from "../Filters/Filters";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
 import { Alert, CircularProgress } from "@mui/material";
@@ -18,6 +19,8 @@ const SearchContainer = (): ReactElement => {
     value: null,
   });
 
+  const [nameInputError, setNameInputError] = useState<string | null>(null);
+
   const queryParameters =
     filters.type === "name"
       ? { beer_name: filters.value }
@@ -30,17 +33,29 @@ const SearchContainer = (): ReactElement => {
   const areFiltersEmpty = !filters.value;
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFilters({
-      type: "name",
-      value: event.target.value,
-    });
+    const value = event.target.value;
+    const isValid = /^[a-zA-Z0-9- ]*$/.test(value);
+
+    if (isValid) {
+      setNameInputError(null);
+      setFilters({
+        type: "name",
+        value: value,
+      });
+    } else {
+      setNameInputError(
+        "Only letters, numbers, spaces and hyphens are allowed.",
+      );
+    }
   };
 
-  const handleDateChange = (newValue: string | null) => {
-    setFilters({
-      type: "date",
-      value: newValue,
-    });
+  const handleDateChange = (value: string | null) => {
+    if (value && dayjs(value).isValid()) {
+      setFilters({
+        type: "date",
+        value: dayjs(value).format("MM-YYYY"),
+      });
+    }
   };
 
   const handleSwitchFiltersType = useCallback(
@@ -68,6 +83,7 @@ const SearchContainer = (): ReactElement => {
         handleSearch={handleSearch}
         handleSwitchFiltersType={handleSwitchFiltersType}
         isSubmitDisabled={areFiltersEmpty}
+        nameInputError={nameInputError}
       />
       {isLoadingOrFetching && <CircularProgress sx={{ alignSelf: "center" }} />}
       {isError && (

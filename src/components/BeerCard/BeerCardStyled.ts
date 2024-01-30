@@ -42,6 +42,10 @@ const BeerCardStyled = styled(Paper)`
       text-overflow: ellipsis;
       text-align: justify;
     }
+
+    &__name {
+      text-align: center;
+    }
   }
 `;
 

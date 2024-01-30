@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import {
   Button,
   FormControlLabel,
@@ -18,6 +18,7 @@ interface FiltersProps {
   handleSearch: () => void;
   isSubmitDisabled: boolean;
   handleSwitchFiltersType: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  nameInputError: string | null;
 }
 
 const Filters = ({
@@ -28,26 +29,35 @@ const Filters = ({
   handleSearch,
   isSubmitDisabled,
   handleSwitchFiltersType,
+  nameInputError,
 }: FiltersProps): ReactElement => {
+  const [isDateInputError, setIsDateInputError] = useState<boolean>(false);
+
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (isSubmitDisabled) return;
+    if (isSubmitDisabled || nameInputError || isDateInputError) return;
 
     handleSearch();
   };
 
+  const isSubmitButtonDisabled =
+    isLoadingOrFetching ||
+    isSubmitDisabled ||
+    Boolean(nameInputError) ||
+    isDateInputError;
+
   return (
     <FiltersStyled onSubmit={handleOnSubmit}>
+      <RadioGroup row value={filters.type} onChange={handleSwitchFiltersType}>
+        <FormControlLabel control={<Radio />} label="By name" value="name" />
+        <FormControlLabel
+          control={<Radio />}
+          label="By brewed before"
+          value="date"
+        />
+      </RadioGroup>
       <div className="inputs">
-        <RadioGroup row value={filters.type} onChange={handleSwitchFiltersType}>
-          <FormControlLabel control={<Radio />} label="By name" value="name" />
-          <FormControlLabel
-            control={<Radio />}
-            label="By brewed before"
-            value="date"
-          />
-        </RadioGroup>
         {filters.type === "name" ? (
           <TextField
             label="Beer name"
@@ -55,6 +65,9 @@ const Filters = ({
             placeholder="Search by beer name"
             className="inputs__name"
             onChange={handleNameChange}
+            error={nameInputError ? true : false}
+            helperText={nameInputError}
+            size="small"
           />
         ) : (
           <DatePicker
@@ -63,17 +76,25 @@ const Filters = ({
             value={filters.value}
             onChange={handleDateChange}
             className="inputs__date"
+            slotProps={{ textField: { size: "small" } }}
+            onError={(error) => {
+              if (error) {
+                setIsDateInputError(true);
+              } else {
+                setIsDateInputError(false);
+              }
+            }}
           />
         )}
+        <Button
+          variant="contained"
+          disabled={isSubmitButtonDisabled}
+          onClick={handleSearch}
+          aria-label="Press to search"
+        >
+          Search
+        </Button>
       </div>
-      <Button
-        variant="contained"
-        className="search-button"
-        disabled={isLoadingOrFetching || isSubmitDisabled}
-        onClick={handleSearch}
-      >
-        Search
-      </Button>
     </FiltersStyled>
   );
 };

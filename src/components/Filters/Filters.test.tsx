@@ -9,7 +9,7 @@ describe("Given a Filters component", () => {
   const handleNameChange = vi.fn();
   const handleSearch = vi.fn();
   const handleSwitchFiltersType = vi.fn();
-  const searchButtonText = "Search";
+  const searchButtonAriaLabel = "Press to search";
   const beerNameLabelText = "Beer name";
   const brewedBeforeLabelText = "Brewed before";
 
@@ -28,11 +28,12 @@ describe("Given a Filters component", () => {
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
           handleSwitchFiltersType={handleSwitchFiltersType}
+          nameInputError={null}
         />,
       );
 
       const buttonElement = screen.getByRole("button", {
-        name: searchButtonText,
+        name: searchButtonAriaLabel,
       });
 
       expect(buttonElement).toBeInTheDocument();
@@ -50,11 +51,12 @@ describe("Given a Filters component", () => {
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
           handleSwitchFiltersType={handleSwitchFiltersType}
+          nameInputError={null}
         />,
       );
 
       const buttonElement = screen.getByRole("button", {
-        name: "Search",
+        name: searchButtonAriaLabel,
       });
 
       expect(buttonElement).toBeDisabled();
@@ -72,11 +74,12 @@ describe("Given a Filters component", () => {
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
           handleSwitchFiltersType={handleSwitchFiltersType}
+          nameInputError={null}
         />,
       );
 
       const buttonElement = screen.getByRole("button", {
-        name: searchButtonText,
+        name: searchButtonAriaLabel,
       });
 
       expect(buttonElement).toBeDisabled();
@@ -94,6 +97,7 @@ describe("Given a Filters component", () => {
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
           handleSwitchFiltersType={handleSwitchFiltersType}
+          nameInputError={null}
         />,
       );
 
@@ -117,6 +121,7 @@ describe("Given a Filters component", () => {
             handleNameChange={handleNameChange}
             handleSearch={handleSearch}
             handleSwitchFiltersType={handleSwitchFiltersType}
+            nameInputError={null}
           />
         </LocalizationProvider>,
       );
@@ -140,6 +145,7 @@ describe("Given a Filters component", () => {
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
           handleSwitchFiltersType={handleSwitchFiltersType}
+          nameInputError={null}
         />,
       );
 
@@ -164,11 +170,12 @@ describe("Given a Filters component", () => {
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
           handleSwitchFiltersType={handleSwitchFiltersType}
+          nameInputError={null}
         />,
       );
 
       const buttonElement = screen.getByRole("button", {
-        name: searchButtonText,
+        name: searchButtonAriaLabel,
       });
 
       fireEvent.click(buttonElement);
