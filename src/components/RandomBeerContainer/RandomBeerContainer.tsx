@@ -1,11 +1,12 @@
 import { ReactElement, useCallback, useEffect, useState } from "react";
-import { Alert, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import RandomBeer from "../RandomBeer/RandomBeer";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
 import RandomBeerContainerStyled from "./RandomBeerContainerStyled";
 import { BeersStructure } from "../../types/types";
 import RandomBeerSkeleton from "../RandomBeerSkeleton/RandomBeerSkeleton";
 import beerImagePlaceholder from "../../assets/beer-placeholder.png";
+import CustomAlert from "../CustomAlert/CustomAlert";
 
 const beersPerPage = 5;
 const randomBeerIndex = 0;
@@ -27,7 +28,7 @@ const BeerErrorFeedback = ({
         height={200}
         width={100}
       />
-      <Alert severity="error">{errorMessage}</Alert>
+      <CustomAlert type="error" message={errorMessage} />
     </>
   );
 };
@@ -38,7 +39,7 @@ const RandomBeerContainer = (): ReactElement => {
     currentPage: firstRandomPage,
     requestedPages: [firstRandomPage],
   });
-  const [nonAlcoholicBeerIndex, setNonAlcoholicBeerIndex] = useState(0);
+  const [nonAlcoholicBeerIndex, setNonAlcoholicBeerIndex] = useState<number>(0);
 
   const { beers, isLoading, refetch, isFetching, isError } = useGetBeers({
     page: pageState.currentPage,

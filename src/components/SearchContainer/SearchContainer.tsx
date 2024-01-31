@@ -2,9 +2,10 @@ import { ReactElement, useCallback, useState } from "react";
 import dayjs from "dayjs";
 import Filters from "../Filters/Filters";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
-import { Alert, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import SearchContainerStyled from "./SearchContainerStyled";
-import BeersList from "../BeerList/BeerList";
+import BeerList from "../BeerList/BeerList";
+import CustomAlert from "../CustomAlert/CustomAlert";
 
 export type BeerFiltersType = "name" | "date";
 
@@ -28,9 +29,6 @@ const SearchContainer = (): ReactElement => {
 
   const { beers, isFetching, isLoading, refetch, isError } =
     useGetBeers(queryParameters);
-
-  const isLoadingOrFetching = isLoading || isFetching;
-  const areFiltersEmpty = !filters.value;
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -72,6 +70,12 @@ const SearchContainer = (): ReactElement => {
     refetch();
   };
 
+  const isLoadingOrFetching = isLoading || isFetching;
+  const areFiltersEmpty = !filters.value;
+
+  const isNoBeersFoundInfo =
+    !isError && beers?.length === 0 && !areFiltersEmpty && !isLoadingOrFetching;
+
   return (
     <SearchContainerStyled>
       <h2>Search</h2>
@@ -87,19 +91,18 @@ const SearchContainer = (): ReactElement => {
       />
       {isLoadingOrFetching && <CircularProgress sx={{ alignSelf: "center" }} />}
       {isError && (
-        <Alert severity="error">
-          Something went wrong, please try again later!
-        </Alert>
+        <CustomAlert
+          type="error"
+          message="Something went wrong, please try again later!"
+        />
       )}
-      {!isError &&
-        beers?.length === 0 &&
-        !areFiltersEmpty &&
-        !isLoadingOrFetching && (
-          <Alert sx={{ width: "fit-content" }} severity="info">
-            No beers found with your search criteria.
-          </Alert>
-        )}
-      {beers && <BeersList beers={beers} />}
+      {isNoBeersFoundInfo && (
+        <CustomAlert
+          type="info"
+          message="No beers found with your search criteria."
+        />
+      )}
+      {beers && <BeerList beers={beers} />}
     </SearchContainerStyled>
   );
 };
