@@ -9,7 +9,12 @@ const RandomBeerSkeleton = () => {
       sx={{ maxWidth: "100" }}
       aria-label="Loading beer information"
     >
-      <Skeleton variant="text" width={"100%"} height={36} />
+      <Skeleton
+        variant="text"
+        width={"100%"}
+        height={36}
+        style={{ maxWidth: "400px" }}
+      />
       <div className="skeleton__body">
         <Skeleton
           variant="rectangular"
