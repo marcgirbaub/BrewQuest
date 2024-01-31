@@ -24,11 +24,7 @@ const RandomBeerContainerStyled = styled(Paper)`
     width: 100%;
 
     @media only screen and (min-width: ${breakpoints.sm}px) {
-      width: fit-content;
-    }
-
-    @media only screen and (min-width: ${breakpoints.lg}px) {
-      min-width: fit-content;
+      max-width: 180px;
     }
   }
 `;
