@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { BeerStructure } from "../../types/types";
 import beerImagePlaceholder from "../../assets/beer-placeholder.png";
 import BeerCardStyled from "./BeerCardStyled";
@@ -21,7 +22,12 @@ const BeerCard = ({ beer }: BeerCardProps): ReactElement => {
         />
       </div>
       <div className="beer-card__info info">
-        <h3 className="info__name">{beer.name}</h3>
+        <div className="info__container">
+          <h3 className="info__name">{beer.name}</h3>
+          <button>
+            <FavoriteIcon fontSize="medium" color="primary" />
+          </button>
+        </div>
         <p className="info__description">{beer.description}</p>
       </div>
     </BeerCardStyled>
