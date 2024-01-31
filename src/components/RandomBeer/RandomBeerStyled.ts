@@ -30,18 +30,39 @@ const RandomBeerStyled = styled(Box)`
       }
     }
 
+    &__details {
+      display: "flex";
+      flex-direction: "column";
+      gap: "4px";
+    }
+
     &__image {
       height: 200px;
       border-radius: 0.5rem;
       object-fit: contain;
-    }
-
-    &__description {
-      text-align: justify;
+      align-self: center;
     }
 
     &__name {
       text-align: center;
+    }
+  }
+
+  .details {
+    &__description {
+      text-align: justify;
+    }
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+
+      &-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-style: italic;
+      }
     }
   }
 `;
