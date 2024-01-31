@@ -1,4 +1,4 @@
-import { ApiBeersResponse, BeerStructure } from "../types/types";
+import { ApiBeersResponse, BeerResponse, BeerStructure } from "../types/types";
 
 export const buzzBeerMock: BeerStructure = {
   id: 1,
@@ -41,7 +41,7 @@ export const trashyBlondeBeerMock: BeerStructure = {
   ],
 };
 
-export const berlinerWeisseWithYuzuBeerMock: BeerStructure = {
+export const berlinerBeerMock: BeerStructure = {
   id: 3,
   name: "Berliner Weisse With Yuzu - B-Sides",
   tagline: "Japanese Citrus Berliner Weisse.",
@@ -60,6 +60,12 @@ export const berlinerWeisseWithYuzuBeerMock: BeerStructure = {
 export const mockListOfBeers: BeerStructure[] = [
   buzzBeerMock,
   trashyBlondeBeerMock,
+];
+
+export const mockListOfThreeBeers: BeerStructure[] = [
+  buzzBeerMock,
+  trashyBlondeBeerMock,
+  berlinerBeerMock,
 ];
 
 export const mockBeersResponse: ApiBeersResponse = [
@@ -417,3 +423,8 @@ export const mockBeersResponse: ApiBeersResponse = [
     contributed_by: "Sam Mason <samjbmason>",
   },
 ];
+
+export const mockBeerResponseNoDescription: BeerResponse = {
+  ...mockBeersResponse[0],
+  description: "",
+};

@@ -29,7 +29,7 @@ const App = (): ReactElement => {
               marginTop: "70px",
               display: "flex",
               flexDirection: "column",
-              gap: "2rem",
+              gap: "2.5rem",
             }}
           >
             <RandomBeerContainer />
