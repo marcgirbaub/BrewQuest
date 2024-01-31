@@ -7,3 +7,9 @@ export const handlers = [
     return HttpResponse.json(mockBeersResponse);
   }),
 ];
+
+export const errorHandlers = [
+  http.get(`${baseURL}${beersEndpoint}`, () => {
+    return new HttpResponse(null, { status: 500 });
+  }),
+];
