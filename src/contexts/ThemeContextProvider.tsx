@@ -1,23 +1,10 @@
-import {
-  ReactElement,
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import { ThemeMode, buildThemeOptions } from "../styles/themeOptions";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-
-interface ThemeContextStructure {
-  theme: ThemeMode;
-  toggleTheme: () => void;
-}
-
-export const ThemeContext = createContext<ThemeContextStructure>({
-  theme: "light",
-  toggleTheme: () => {},
-});
+import { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
+import {
+  ThemeMode,
+  getCustomThemeOptions,
+} from "../styles/getCustomThemeOptions";
+import { ThemeContext } from "./ThemeContext";
 
 interface ThemeContextProviderProps {
   children: ReactElement | ReactElement[];
@@ -31,7 +18,7 @@ export const ThemeContextProvider = ({
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  const [usedTheme, setUsedTheme] = useState<ThemeMode>(() => {
+  const [theme, setTheme] = useState<ThemeMode>(() => {
     if (typeof window !== "undefined") {
       const localStorageTheme = window.localStorage.getItem("theme");
 
@@ -44,28 +31,28 @@ export const ThemeContextProvider = ({
   });
 
   const toggleTheme = useCallback(() => {
-    setUsedTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      window.localStorage.setItem("theme", usedTheme);
+      window.localStorage.setItem("theme", theme);
     }
-  }, [usedTheme]);
+  }, [theme]);
 
-  const theme = createTheme(buildThemeOptions(usedTheme));
+  const materialUiTheme = createTheme(getCustomThemeOptions(theme));
 
   const store = useMemo(
     () => ({
-      theme: usedTheme,
+      theme: theme,
       toggleTheme,
     }),
-    [toggleTheme, usedTheme],
+    [toggleTheme, theme],
   );
 
   return (
     <ThemeContext.Provider value={store}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={materialUiTheme}>
         <CssBaseline>{children}</CssBaseline>
       </ThemeProvider>
     </ThemeContext.Provider>

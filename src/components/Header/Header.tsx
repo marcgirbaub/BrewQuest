@@ -1,8 +1,8 @@
 import { Switch } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { ReactElement, useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContextProvider";
 import HeaderStyled from "./HeaderStyled";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const Header = (): ReactElement => {
   const { toggleTheme, theme } = useContext(ThemeContext);

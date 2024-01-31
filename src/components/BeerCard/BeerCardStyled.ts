@@ -29,6 +29,7 @@ const BeerCardStyled = styled(Paper)`
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
 
     @media only screen and (min-width: ${breakpoints.sm}px) {
       align-items: flex-start;
@@ -43,8 +44,17 @@ const BeerCardStyled = styled(Paper)`
       text-align: justify;
     }
 
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+    }
+
     &__name {
-      text-align: center;
+      @media only screen and (min-width: ${breakpoints.sm}px) {
+        text-align: center;
+      }
     }
   }
 `;
