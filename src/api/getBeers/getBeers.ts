@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import apiClient from "../apiClient";
-import { beersEndpoint } from "../apiEndpoints";
+import { beersEndpoint } from "../endpoints";
 import { ApiBeersResponse } from "../../types/types";
 
 export interface GetBeersParams {

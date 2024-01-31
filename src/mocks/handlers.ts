@@ -1,5 +1,5 @@
 import { HttpResponse, http } from "msw";
-import { baseURL, beersEndpoint } from "../api/apiEndpoints";
+import { baseURL, beersEndpoint } from "../api/endpoints";
 import { mockBeersResponse } from "./beerMocks";
 
 export const handlers = [

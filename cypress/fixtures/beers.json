@@ -1,0 +1,616 @@
+[
+  {
+    "id": 166,
+    "name": "Vagabond Pale ALe - Prototype Challenge",
+    "tagline": "Gluten Free Beer. Toffee. Piney. Fruitcake.",
+    "first_brewed": "11/2014",
+    "description": "A foundation of caramel malt is buttressed by a raucously resinous bitterness, as the rioting backdrop of citrus and tropical fruit flow in waves from those twin titans of the US – Centennial and Amarillo. And it also happens to be gluten free.",
+    "image_url": "https://images.punkapi.com/v2/166.png",
+    "abv": 4.5,
+    "ibu": 55,
+    "target_fg": 1011,
+    "target_og": 1045,
+    "ebc": 20,
+    "srm": 10,
+    "ph": 4.2,
+    "attenuation_level": 73.9,
+    "volume": {
+      "value": 20,
+      "unit": "litres"
+    },
+    "boil_volume": {
+      "value": 25,
+      "unit": "litres"
+    },
+    "method": {
+      "mash_temp": [
+        {
+          "temp": {
+            "value": 65,
+            "unit": "celsius"
+          },
+          "duration": 75
+        }
+      ],
+      "fermentation": {
+        "temp": {
+          "value": 19,
+          "unit": "celsius"
+        }
+      },
+      "twist": null
+    },
+    "ingredients": {
+      "malt": [
+        {
+          "name": "Pale Ale",
+          "amount": {
+            "value": 3.38,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Caramalt",
+          "amount": {
+            "value": 0.5,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Crystal 150",
+          "amount": {
+            "value": 0.19,
+            "unit": "kilograms"
+          }
+        }
+      ],
+      "hops": [
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 2.5,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Amarillo",
+          "amount": {
+            "value": 2.5,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 10,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Amarillo",
+          "amount": {
+            "value": 10,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Amarillo",
+          "amount": {
+            "value": 12.5,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 100,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        },
+        {
+          "name": "Amarillo",
+          "amount": {
+            "value": 87.5,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        }
+      ],
+      "yeast": "Wyeast 1056 - American Ale™"
+    },
+    "food_pairing": [
+      "Chinese chicken salad",
+      "Lemon grilled halibut",
+      "Apple crumble"
+    ],
+    "brewers_tips": "Add .75g (0.026oz) of Brewers Clarex to your fermentation vessel during casting.",
+    "contributed_by": "Sam Mason <samjbmason>"
+  },
+  {
+    "id": 167,
+    "name": "Libertine Black Ale",
+    "tagline": "The New Black. Roasty. Hoppy. Fruity.",
+    "first_brewed": "03/2012",
+    "description": "A dark hop bomb combining the malt-forward indulgences of a stout with the insatiable hopload of an IPA. Rich spiced blackcurrant and caramel up front, with a sharp bitter finish following behind, bringing grapefruit and resin with it. Dry, bitter and intense; this is an IPA first and foremost, given a dark malt makeover. Originally brewed as a Simcoe only single hop IPA, we've experimented with adding a little Cascade and Mosaic for extra depth.",
+    "image_url": "https://images.punkapi.com/v2/167.png",
+    "abv": 7.2,
+    "ibu": 50,
+    "target_fg": 1013,
+    "target_og": 1068,
+    "ebc": 150,
+    "srm": 76,
+    "ph": 4.4,
+    "attenuation_level": 78.6,
+    "volume": {
+      "value": 20,
+      "unit": "litres"
+    },
+    "boil_volume": {
+      "value": 25,
+      "unit": "litres"
+    },
+    "method": {
+      "mash_temp": [
+        {
+          "temp": {
+            "value": 65,
+            "unit": "celsius"
+          },
+          "duration": 75
+        }
+      ],
+      "fermentation": {
+        "temp": {
+          "value": 19,
+          "unit": "celsius"
+        }
+      },
+      "twist": null
+    },
+    "ingredients": {
+      "malt": [
+        {
+          "name": "Extra Pale",
+          "amount": {
+            "value": 5.3,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Caramalt",
+          "amount": {
+            "value": 0.25,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Crystal 150",
+          "amount": {
+            "value": 0.19,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Carafa Special Malt Type 1",
+          "amount": {
+            "value": 0.13,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Carafa Special Malt Type 3",
+          "amount": {
+            "value": 0.19,
+            "unit": "kilograms"
+          }
+        }
+      ],
+      "hops": [
+        {
+          "name": "Simcoe",
+          "amount": {
+            "value": 18.75,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Simcoe",
+          "amount": {
+            "value": 18.75,
+            "unit": "grams"
+          },
+          "add": "middle",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Simcoe",
+          "amount": {
+            "value": 37.5,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Simcoe",
+          "amount": {
+            "value": 175,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        },
+        {
+          "name": "Cascade",
+          "amount": {
+            "value": 37.5,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        },
+        {
+          "name": "Mosaic",
+          "amount": {
+            "value": 37.5,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        }
+      ],
+      "yeast": "Wyeast 1272 - American Ale II™"
+    },
+    "food_pairing": [
+      "Grilled king prawns with a chilli lime sauce",
+      "Blue cheese burger",
+      "Flourless chocolate ginger cake"
+    ],
+    "brewers_tips": "The goal here is to make a black beer that tastes like an IPA. Don't overload the black or roasted malts to try and achieve the correct colour. Too much roasted malts will suppress far too much of that beautiful citrus and tropical flavour from the Simcoe. It may be hard to get hold of Carafa, but it will allow you to get a great colour, without all of the characteristic roasty astringent flavours.",
+    "contributed_by": "Sam Mason <samjbmason>"
+  },
+  {
+    "id": 168,
+    "name": "Jack Hammer",
+    "tagline": "Ruthless India Pale Ale. Hoppy. Bitter. Hoppy.",
+    "first_brewed": "06/2012",
+    "description": "Hopped beyond the point at which IBUs are measurable, only the most hardened palate will get beyond Jack Hammer's intensely resinous pithy bitterness and to the grapefruit, orange zest and dry biscuity malt beyond. You could brew this with less hops, but really, why would you bother?",
+    "image_url": "https://images.punkapi.com/v2/168.png",
+    "abv": 7.2,
+    "ibu": 250,
+    "target_fg": 1010,
+    "target_og": 1065,
+    "ebc": 15,
+    "srm": 7.5,
+    "ph": 4.4,
+    "attenuation_level": 84.6,
+    "volume": {
+      "value": 20,
+      "unit": "litres"
+    },
+    "boil_volume": {
+      "value": 25,
+      "unit": "litres"
+    },
+    "method": {
+      "mash_temp": [
+        {
+          "temp": {
+            "value": 65,
+            "unit": "celsius"
+          },
+          "duration": 75
+        }
+      ],
+      "fermentation": {
+        "temp": {
+          "value": 21,
+          "unit": "celsius"
+        }
+      },
+      "twist": null
+    },
+    "ingredients": {
+      "malt": [
+        {
+          "name": "Extra Pale",
+          "amount": {
+            "value": 5.8,
+            "unit": "kilograms"
+          }
+        }
+      ],
+      "hops": [
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 25,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Columbus Extract",
+          "amount": {
+            "value": 30,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 18.75,
+            "unit": "grams"
+          },
+          "add": "middle",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Columbus",
+          "amount": {
+            "value": 18.75,
+            "unit": "grams"
+          },
+          "add": "middle",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 50,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Columbus",
+          "amount": {
+            "value": 25,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Amarillo",
+          "amount": {
+            "value": 100,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        },
+        {
+          "name": "Citra",
+          "amount": {
+            "value": 100,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        },
+        {
+          "name": "Simcoe",
+          "amount": {
+            "value": 100,
+            "unit": "grams"
+          },
+          "add": "dry hop",
+          "attribute": "aroma"
+        }
+      ],
+      "yeast": "Wyeast 1272 - American Ale II™"
+    },
+    "food_pairing": [
+      "Phall Curry",
+      "Pork burrito with a habanero and mango chilli salsa",
+      "Ginger and grapefruit poundcake"
+    ],
+    "brewers_tips": "Be aware that this is probably the hoppiest beer you will ever make. Make sure you use fresh hops, for a massive fresh grapefruit hit. Have everything else in your store cupboard, and buy your hops last, as close to brew day as possible!",
+    "contributed_by": "Sam Mason <samjbmason>"
+  },
+  {
+    "id": 169,
+    "name": "AB:19",
+    "tagline": "A Blend of Two Barrel-aged Imperial Saisons.",
+    "first_brewed": "06/2012",
+    "description": "One of the most complex beers we’ve ever attempted. A blend of two barrel-aged Imperial Saisons – one black, one red – which has in turn then been aged in rum barrels, it is an enormous, intricate beer. A baseline of warm, smoky raisin and plum, followed by punchy flavour elements coming to the fore – coconut, mint and blackcurrant. There’s a long undercurrent of treacle toffee, before the finish darkens to liquorice, star anise amidst a touch of honey sweetness.",
+    "image_url": "https://images.punkapi.com/v2/169.png",
+    "abv": 13.1,
+    "ibu": null,
+    "target_fg": null,
+    "target_og": null,
+    "ebc": null,
+    "srm": null,
+    "ph": null,
+    "attenuation_level": null,
+    "volume": {
+      "value": 20,
+      "unit": "litres"
+    },
+    "boil_volume": {
+      "value": 25,
+      "unit": "litres"
+    },
+    "method": {
+      "mash_temp": [
+        {
+          "temp": {
+            "value": null,
+            "unit": "celsius"
+          },
+          "duration": null
+        }
+      ],
+      "fermentation": {
+        "temp": {
+          "value": null,
+          "unit": "celsius"
+        }
+      },
+      "twist": "This beer is an odd one in our collection as it is a blend of two recipes that feature elsewhere. These recipes are #123 Everyday Anarchy and #124 Black Jacques. Both Imperial Saisons spent a little under a year in white and red wine barrels respectively. However, while the pair were being tasted to determine their readiness to be released, a fun game of blending turned into a light bulb moment. The beers were blended and laid down once more in our barrel cellar, this time being infused with the heady note of rum. We were so excited about this mystical blend that we ended up using up all the beer that had been lovingly aged. It would have been a travesty for these beers to go unrecognised as the unique individuals they were, so we brewed them again in 2013 to be released as had always been intended. Age the individual beers separately before blending and ageing further on oak chips soaked in rum."
+    },
+    "ingredients": {
+      "malt": [],
+      "hops": [],
+      "yeast": null
+    },
+    "food_pairing": [
+      "Game terrine",
+      "Spiced fruit cake",
+      "Chocolate, cherry and hazelnut mousse"
+    ],
+    "brewers_tips": "It can be difficult to get the perfect balance between both beers. Set up several small blends of varying percentages to determine which you prefer.",
+    "contributed_by": "Sam Mason <samjbmason>"
+  },
+  {
+    "id": 170,
+    "name": "Bashah (w/ Stone Brewing Co)",
+    "tagline": "Black Belgian Double IPA.",
+    "first_brewed": "08/2009",
+    "description": "Brewed when our good friends from Stone visited in 2009. Black As Sin, Hoppy As Hell - no other beer name has quite hit the nail so squarely on the head. Dark roasted malt makes a beautiful canvas for the savage hop bitterness, pine needles and orange zest.",
+    "image_url": "https://images.punkapi.com/v2/170.png",
+    "abv": 9.7,
+    "ibu": 100,
+    "target_fg": 1015,
+    "target_og": 1088,
+    "ebc": 30,
+    "srm": 15.3,
+    "ph": 4.4,
+    "attenuation_level": 83,
+    "volume": {
+      "value": 20,
+      "unit": "litres"
+    },
+    "boil_volume": {
+      "value": 25,
+      "unit": "litres"
+    },
+    "method": {
+      "mash_temp": [
+        {
+          "temp": {
+            "value": 65,
+            "unit": "celsius"
+          },
+          "duration": 175
+        }
+      ],
+      "fermentation": {
+        "temp": {
+          "value": 19,
+          "unit": "celsius"
+        }
+      },
+      "twist": null
+    },
+    "ingredients": {
+      "malt": [
+        {
+          "name": "Extra Pale",
+          "amount": {
+            "value": 8.13,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Chocolate",
+          "amount": {
+            "value": 0.16,
+            "unit": "kilograms"
+          }
+        },
+        {
+          "name": "Carafa Special Malt Type 3",
+          "amount": {
+            "value": 0.48,
+            "unit": "kilograms"
+          }
+        }
+      ],
+      "hops": [
+        {
+          "name": "Hercules",
+          "amount": {
+            "value": 31.3,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Magnum",
+          "amount": {
+            "value": 12.5,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Magnum",
+          "amount": {
+            "value": 12.5,
+            "unit": "grams"
+          },
+          "add": "start",
+          "attribute": "bitter"
+        },
+        {
+          "name": "Hercules",
+          "amount": {
+            "value": 12.5,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Centennial",
+          "amount": {
+            "value": 25,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        },
+        {
+          "name": "Amarillo",
+          "amount": {
+            "value": 25,
+            "unit": "grams"
+          },
+          "add": "end",
+          "attribute": "flavour"
+        }
+      ],
+      "yeast": "Wyeast 3522 - Belgian Ardennes™"
+    },
+    "food_pairing": [
+      "Chocolate crème brûlée with raspberries",
+      "Thyme, rosemary and black pepper rubbed roast beef served with fried green beans",
+      "Angus beef cheeseburger"
+    ],
+    "brewers_tips": "We also produced two separate barrel- aged versions of this beer; Bashah 2009 Highland Park and Black Raspberry Reserve, and Bashah 2009 Imperial and Tayberry Reserve were two barrel aged versions of the beer. Try ageing this beer on oak or with fruit to make your own reserve.",
+    "contributed_by": "Sam Mason <samjbmason>"
+  }
+]

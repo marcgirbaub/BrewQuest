@@ -68,6 +68,7 @@ const Filters = ({
             error={Boolean(nameInputError)}
             helperText={nameInputError}
             size="small"
+            data-testid="beer-name-input"
           />
         ) : (
           <DatePicker
@@ -92,6 +93,7 @@ const Filters = ({
           onClick={handleSearch}
           aria-label="Press to search"
           className="inputs__button"
+          data-testid="search-button"
         >
           Search
         </Button>
