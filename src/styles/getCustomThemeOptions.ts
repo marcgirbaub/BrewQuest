@@ -3,18 +3,12 @@ import { breakpoints } from "./breakpoints";
 
 export type ThemeMode = "light" | "dark";
 
-export const buildThemeOptions = (theme: ThemeMode) => {
-  const themeOptions: ThemeOptions = {
+export const getCustomThemeOptions = (theme: ThemeMode): ThemeOptions => {
+  return {
     palette: {
       mode: theme,
       primary: {
-        main: "#2CAD84",
-      },
-      secondary: {
-        main: "#edf2ff",
-      },
-      background: {
-        default: theme === "light" ? "fff" : "#353535",
+        main: theme === "light" ? "#185E47" : "#2CAD84",
       },
     },
     breakpoints: {
@@ -27,6 +21,4 @@ export const buildThemeOptions = (theme: ThemeMode) => {
       },
     },
   };
-
-  return themeOptions;
 };
