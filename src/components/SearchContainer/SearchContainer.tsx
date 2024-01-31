@@ -3,8 +3,8 @@ import dayjs from "dayjs";
 import Filters from "../Filters/Filters";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
 import { Alert, CircularProgress } from "@mui/material";
-import BeerCard from "../BeerCard/BeerCard";
 import SearchContainerStyled from "./SearchContainerStyled";
+import BeersList from "../BeerList/BeerList";
 
 export type BeerFiltersType = "name" | "date";
 
@@ -99,15 +99,7 @@ const SearchContainer = (): ReactElement => {
             No beers found with your search criteria.
           </Alert>
         )}
-      {beers && (
-        <ul style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-          {beers.map((beer) => (
-            <li key={beer.id}>
-              <BeerCard beer={beer} />
-            </li>
-          ))}
-        </ul>
-      )}
+      {beers && <BeersList beers={beers} />}
     </SearchContainerStyled>
   );
 };
