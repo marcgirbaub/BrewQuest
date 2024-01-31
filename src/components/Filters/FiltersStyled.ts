@@ -25,6 +25,10 @@ const FiltersStyled = styled.form`
       }
     }
   }
+
+  .inputs__button {
+    max-height: 40px;
+  }
 `;
 
 export default FiltersStyled;

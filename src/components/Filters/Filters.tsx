@@ -42,9 +42,9 @@ const Filters = ({
   };
 
   const isSubmitButtonDisabled =
+    Boolean(nameInputError) ||
     isLoadingOrFetching ||
     isSubmitDisabled ||
-    Boolean(nameInputError) ||
     isDateInputError;
 
   return (
@@ -53,7 +53,7 @@ const Filters = ({
         <FormControlLabel control={<Radio />} label="By name" value="name" />
         <FormControlLabel
           control={<Radio />}
-          label="By brewed before"
+          label="Brewed before"
           value="date"
         />
       </RadioGroup>
@@ -65,7 +65,7 @@ const Filters = ({
             placeholder="Search by beer name"
             className="inputs__name"
             onChange={handleNameChange}
-            error={nameInputError ? true : false}
+            error={Boolean(nameInputError)}
             helperText={nameInputError}
             size="small"
           />
@@ -91,6 +91,7 @@ const Filters = ({
           disabled={isSubmitButtonDisabled}
           onClick={handleSearch}
           aria-label="Press to search"
+          className="inputs__button"
         >
           Search
         </Button>
