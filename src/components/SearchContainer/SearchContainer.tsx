@@ -56,7 +56,7 @@ const SearchContainer = (): ReactElement => {
     }
   };
 
-  const handleSwitchFiltersType = useCallback(
+  const handleSwitchFilters = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setFilters({
         value: null,
@@ -73,7 +73,7 @@ const SearchContainer = (): ReactElement => {
   const isLoadingOrFetching = isLoading || isFetching;
   const areFiltersEmpty = !filters.value;
 
-  const isNoBeersFoundInfo =
+  const areNoBeersFound =
     !isError && beers?.length === 0 && !areFiltersEmpty && !isLoadingOrFetching;
 
   return (
@@ -85,7 +85,7 @@ const SearchContainer = (): ReactElement => {
         handleNameChange={handleNameChange}
         handleDateChange={handleDateChange}
         handleSearch={handleSearch}
-        handleSwitchFiltersType={handleSwitchFiltersType}
+        handleSwitchFilters={handleSwitchFilters}
         isSubmitDisabled={areFiltersEmpty}
         nameInputError={nameInputError}
       />
@@ -96,7 +96,7 @@ const SearchContainer = (): ReactElement => {
           message="Something went wrong, please try again later!"
         />
       )}
-      {isNoBeersFoundInfo && (
+      {areNoBeersFound && (
         <CustomAlert
           type="info"
           message="No beers found with your search criteria."
