@@ -87,4 +87,22 @@ describe("When navigating to the home page", () => {
       cy.contains(expectedErrorMessage).should("exist");
     });
   });
+
+  describe("And the user writes the number 2 in the Brewed before input and clicks on the By name filter and writes `Test`", () => {
+    it("Then the search button should not be disabled", () => {
+      cy.get('[data-testid="brewed-before-radio"]')
+        .find('input[type="radio"]')
+        .click();
+      cy.get('input[placeholder="MMMM YYYY"]').type(2);
+
+      cy.get('[data-testid="search-button"]').should("be.disabled");
+
+      cy.get('[data-testid="by-name-radio"]')
+        .find('input[type="radio"]')
+        .click();
+      cy.get('[data-testid="beer-name-input"]').type("Test");
+
+      cy.get('[data-testid="search-button"]').should("not.be.disabled");
+    });
+  });
 });
