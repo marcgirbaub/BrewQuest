@@ -3,9 +3,9 @@
 The application is deployed and available on Vercel. You can access the production version at the following URL:
 https://brewquest.vercel.app/
 
-If you prefer to run the application locally, please follow the below instructions.
+If you prefer to run the application locally, please follow the instructions below.
 
-You will also find additional information and comments below.
+You will also find additional information and comments.
 
 ## **Getting started**
 
@@ -23,6 +23,8 @@ To start the app in **development mode**, run:
 npm run dev
 ```
 
+By default, the app will run at **http://localhost:5173** in development mode.
+
 To start the app in **production mode**, first you need to run the build and then start the app by running the following commands:
 
 ```
@@ -31,7 +33,7 @@ npm run build
 npm run preview
 ```
 
-You will be able to access the application at **http://localhost:5173**.
+By default, the app will run at **http://localhost:4173** in production mode.
 
 ## **Running tests**
 
@@ -49,7 +51,7 @@ npm run cypress:open
 
 ## Development Approach
 
-This project was developed through small, iterative deliveries, which allows for rapid adjustments to changing requirements and feedback in a real-world project. My approach was mainly to break down the larger project into smaller, manageable problems, addressing them one at a time. This strategy facilitates a smoother development process and enables me to maintain a high level of focus and efficiency.
+This project was developed through small, iterative deliveries, which, in a real-world project, allow for rapid adjustments to changing requirements and feedback. My approach was mainly to break down the larger project into smaller, manageable problems, addressing them one at a time. This strategy facilitates a smoother development process and enables me to maintain a high level of focus and efficiency.
 
 ## **Additional information and comments**
 
@@ -66,13 +68,12 @@ This project was developed through small, iterative deliveries, which allows for
   [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=marcgirbaub_BrewQuest&metric=coverage)](https://sonarcloud.io/summary/new_code?id=marcgirbaub_BrewQuest)
 
   - **Unit and integration tests** at component and function level were implemented to ensure that the app is **robust** and **reliable**. Using **Vitest** and **React Testing Library**, the app has a **testing coverage** up to **90%**. **MSW** (mock service worker) was used to mock API calls in the test environment, so that the tests are **isolated** from the API.
-  - **E2E testing** at page and user interaction level were performed using **Cypress**. API requests were also mocked for e2e testing.
+  - **E2E testing** was performed using **Cypress**. API requests were also mocked for e2e tests.
   - **Behaviour Driven Development** was used to write the tests, using **Gherkin** syntax and **Given-When-Then** structure to make them more **readable** and **maintainable**.
 
 - **Data Persistance**: favourite beers and theme mode persist in the client using **zustand** and **local storage**.
 
 - **CI/CD** tools such as **Commitlint**, **Husky**, **Lint-staged**, **Github Actions** and **SonarCloud** were implemented to ensure that the code is **consistent** and **error-free**.
-- A clean **GIT** branching strategy was followed to keep the project **organized** and **clean**.
 
 - **UI Enhancement**: UI was built with a mobile first approach and using Material UI to style an **intuitive user interface** that ensures a **seamless** and **accessible experience**.
 

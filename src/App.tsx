@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeContextProvider } from "./store/contexts/ThemeContextProvider";
+import { ThemeContextProvider } from "./store/context/ThemeContextProvider";
 import Layout from "./components/Layout/Layout";
 
 const App = (): ReactElement => {

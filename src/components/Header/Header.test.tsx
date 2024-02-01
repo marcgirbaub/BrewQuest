@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, test } from "vitest";
 import Header from "./Header";
-import { ThemeContextProvider } from "../../store/contexts/ThemeContextProvider";
+import { ThemeContextProvider } from "../../store/context/ThemeContextProvider";
 
 describe("Given a Header component", () => {
   describe("When it is rendered", () => {
