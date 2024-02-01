@@ -3,7 +3,7 @@ import { ReactElement, useCallback, useEffect, useMemo, useState } from "react";
 import {
   ThemeMode,
   getCustomThemeOptions,
-} from "../styles/getCustomThemeOptions";
+} from "../../styles/getCustomThemeOptions";
 import { ThemeContext } from "./ThemeContext";
 
 interface ThemeContextProviderProps {

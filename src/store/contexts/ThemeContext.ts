@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ThemeMode } from "../styles/getCustomThemeOptions";
+import { ThemeMode } from "../../styles/getCustomThemeOptions";
 
 interface ThemeContextStructure {
   theme: ThemeMode;

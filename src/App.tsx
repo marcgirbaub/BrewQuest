@@ -5,7 +5,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RandomBeerContainer from "./components/RandomBeerContainer/RandomBeerContainer";
 import { breakpoints } from "./styles/breakpoints";
-import { ThemeContextProvider } from "./contexts/ThemeContextProvider";
+import { ThemeContextProvider } from "./store/contexts/ThemeContextProvider";
 import Header from "./components/Header/Header";
 import SearchContainer from "./components/SearchContainer/SearchContainer";
 
