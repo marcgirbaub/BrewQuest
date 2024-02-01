@@ -9,18 +9,16 @@ const randomNonAlcoholicBeerText = "Random non alcoholic Beer";
 describe("When navigating to the home page", () => {
   beforeEach(() => {
     cy.visit("/");
+    cy.intercept("GET", `${apiUrl}?page=*`, { fixture: "beers.json" });
   });
 
   it("Then it should display a heading with the name `BrewQuest`", () => {
     const expectedHeading = "BrewQuest";
+
     cy.get("h1").should("contain", expectedHeading);
   });
 
   describe("And the API returns a list of random beers", () => {
-    beforeEach(() => {
-      cy.intercept("GET", `${apiUrl}*`, { fixture: "beers.json" });
-    });
-
     it("Then it should show the name of the first random beer returned by the API", () => {
       cy.get("h2.beer__name").should("contain", beers[0].name);
     });
@@ -80,6 +78,7 @@ describe("When navigating to the home page", () => {
       cy.get('[data-testid="beer-name-input"]').type("asd");
       cy.get('[data-testid="search-button"]').click();
 
+      //this is a workaround to wait for the request to finish, since useQuery retries 3 times when it fails.
       cy.wait("@getBeer");
       cy.wait("@getBeer");
       cy.wait("@getBeer");
