@@ -17,7 +17,7 @@ interface FiltersProps {
   handleDateChange: (newValue: string | null) => void;
   handleSearch: () => void;
   isSubmitDisabled: boolean;
-  handleSwitchFiltersType: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSwitchFilters: (event: React.ChangeEvent<HTMLInputElement>) => void;
   nameInputError: string | null;
 }
 
@@ -28,7 +28,7 @@ const Filters = ({
   handleDateChange,
   handleSearch,
   isSubmitDisabled,
-  handleSwitchFiltersType,
+  handleSwitchFilters,
   nameInputError,
 }: FiltersProps): ReactElement => {
   const [isDateInputError, setIsDateInputError] = useState<boolean>(false);
@@ -49,7 +49,7 @@ const Filters = ({
 
   return (
     <FiltersStyled onSubmit={handleOnSubmit}>
-      <RadioGroup row value={filters.type} onChange={handleSwitchFiltersType}>
+      <RadioGroup row value={filters.type} onChange={handleSwitchFilters}>
         <FormControlLabel control={<Radio />} label="By name" value="name" />
         <FormControlLabel
           control={<Radio />}

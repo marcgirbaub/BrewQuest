@@ -7,6 +7,7 @@ import { BeersStructure } from "../../types/types";
 import RandomBeerSkeleton from "../RandomBeerSkeleton/RandomBeerSkeleton";
 import beerImagePlaceholder from "../../assets/beer-placeholder.png";
 import CustomAlert from "../CustomAlert/CustomAlert";
+import getNewRandomPage from "../../utils/getNewRandomPage";
 
 const beersPerPage = 5;
 const randomBeerIndex = 0;
@@ -75,8 +76,6 @@ const RandomBeerContainer = (): ReactElement => {
       setRandomBeers((prevBeers) => prevBeers!.slice(randomBeerIndex + 1));
     } else {
       setPageState((prevState) => {
-        let newPage;
-
         if (prevState.requestedPages.length === maxNumberOfPages) {
           return {
             ...prevState,
@@ -85,11 +84,10 @@ const RandomBeerContainer = (): ReactElement => {
           };
         }
 
-        do {
-          newPage = Math.floor(Math.random() * maxNumberOfPages) + 1;
-        } while (
-          prevState.requestedPages.includes(newPage) ||
-          newPage === prevState.currentPage
+        const newPage = getNewRandomPage(
+          prevState.currentPage,
+          prevState.requestedPages,
+          maxNumberOfPages,
         );
 
         return {
@@ -118,7 +116,6 @@ const RandomBeerContainer = (): ReactElement => {
   const isNonAlcoholicErrorOrNoBeers =
     isNonAlcoholicError ||
     (!nonAlcoholicBeers?.length && !hasBeers && !isLoadingOrFetching);
-  const hasBeersAndNotLoading = hasBeers === true;
 
   return (
     <RandomBeerContainerStyled elevation={3}>
@@ -130,7 +127,7 @@ const RandomBeerContainer = (): ReactElement => {
             <BeerErrorFeedback errorMessage="Something went wrong with fetching non-alcoholic beer, please try again." />
           )}
           {isLoadingOrFetching && <RandomBeerSkeleton />}
-          {hasBeersAndNotLoading && (
+          {hasBeers === true && (
             <RandomBeer beer={randomBeers[randomBeerIndex]} />
           )}
         </>
@@ -140,6 +137,7 @@ const RandomBeerContainer = (): ReactElement => {
           variant="contained"
           onClick={handleAnotherBeer}
           disabled={isLoadingOrFetching}
+          aria-label="Press to get another beer"
         >
           Another Beer
         </Button>
@@ -147,6 +145,7 @@ const RandomBeerContainer = (): ReactElement => {
           variant="outlined"
           disabled={isLoadingOrFetching}
           onClick={handleNonAlcoholicBeer}
+          aria-label="Press to get random non alcoholic beer"
         >
           Random non alcoholic Beer
         </Button>
