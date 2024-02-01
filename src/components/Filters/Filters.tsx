@@ -12,7 +12,6 @@ import { BeerFiltersState } from "../SearchContainer/SearchContainer";
 
 interface FiltersProps {
   filters: BeerFiltersState;
-  isLoadingOrFetching?: boolean;
   handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleDateChange: (newValue: string | null) => void;
   handleSearch: () => void;
@@ -28,7 +27,6 @@ interface FiltersProps {
 
 const Filters = ({
   filters,
-  isLoadingOrFetching,
   handleNameChange,
   handleDateChange,
   handleSearch,
@@ -40,13 +38,10 @@ const Filters = ({
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (isSubmitDisabled || inputError) return;
+    if (isSubmitDisabled) return;
 
     handleSearch();
   };
-
-  const isSubmitButtonDisabled =
-    Boolean(inputError) || isLoadingOrFetching || isSubmitDisabled;
 
   return (
     <FiltersStyled onSubmit={handleOnSubmit}>
@@ -90,7 +85,7 @@ const Filters = ({
         )}
         <Button
           variant="contained"
-          disabled={isSubmitButtonDisabled}
+          disabled={isSubmitDisabled}
           onClick={handleSearch}
           aria-label="Press to search"
           className="inputs__button"

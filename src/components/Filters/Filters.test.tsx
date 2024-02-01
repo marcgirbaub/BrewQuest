@@ -24,7 +24,6 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
@@ -42,37 +41,12 @@ describe("Given a Filters component", () => {
     });
   });
 
-  describe("When it receives isLoadingOrFetching as true", () => {
-    test("Then it should disable the button", () => {
-      render(
-        <Filters
-          filters={{ type: "name", value: "" }}
-          isSubmitDisabled={false}
-          isLoadingOrFetching={true}
-          handleDateChange={handleDateChange}
-          handleNameChange={handleNameChange}
-          handleSearch={handleSearch}
-          handleFiltersChange={handleFiltersChange}
-          inputError={null}
-          setInputError={setInputError}
-        />,
-      );
-
-      const buttonElement = screen.getByRole("button", {
-        name: searchButtonAriaLabel,
-      });
-
-      expect(buttonElement).toBeDisabled();
-    });
-  });
-
   describe("When it receives isSubmitDisabled as true", () => {
     test("Then it should disable the button", () => {
       render(
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={true}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
@@ -96,7 +70,6 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
@@ -121,7 +94,6 @@ describe("Given a Filters component", () => {
           <Filters
             filters={{ type: "date", value: "" }}
             isSubmitDisabled={false}
-            isLoadingOrFetching={false}
             handleDateChange={handleDateChange}
             handleNameChange={handleNameChange}
             handleSearch={handleSearch}
@@ -146,7 +118,6 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
@@ -172,7 +143,6 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}

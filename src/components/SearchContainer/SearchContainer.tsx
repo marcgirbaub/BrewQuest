@@ -1,8 +1,8 @@
 import { ReactElement, useCallback, useState } from "react";
 import dayjs from "dayjs";
+import { CircularProgress } from "@mui/material";
 import Filters from "../Filters/Filters";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
-import { CircularProgress } from "@mui/material";
 import SearchContainerStyled from "./SearchContainerStyled";
 import BeerList from "../BeerList/BeerList";
 import CustomAlert from "../CustomAlert/CustomAlert";
@@ -71,22 +71,23 @@ const SearchContainer = (): ReactElement => {
   };
 
   const isLoadingOrFetching = isLoading || isFetching;
-  const areFiltersEmpty = !filters.value;
+
+  const isSubmitDisabled =
+    Boolean(inputError) || isLoadingOrFetching || !filters.value;
 
   const areNoBeersFound =
-    !isError && beers?.length === 0 && !areFiltersEmpty && !isLoadingOrFetching;
+    !isError && beers?.length === 0 && !isLoadingOrFetching;
 
   return (
     <SearchContainerStyled>
       <h2>Search</h2>
       <Filters
         filters={filters}
-        isLoadingOrFetching={isLoadingOrFetching}
         handleNameChange={handleNameChange}
         handleDateChange={handleDateChange}
         handleSearch={handleSearch}
         handleFiltersChange={handleFiltersChange}
-        isSubmitDisabled={areFiltersEmpty}
+        isSubmitDisabled={isSubmitDisabled}
         inputError={inputError}
         setInputError={setInputError}
       />
