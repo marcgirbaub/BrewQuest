@@ -3,6 +3,8 @@
 The application is deployed and available on Vercel. You can access the production version at the following URL:
 https://brewquest.vercel.app/
 
+If you prefer to run the application locally, please follow the below instructions.
+
 ## **Getting started**
 
 Node version: **18.15.0**
@@ -45,7 +47,7 @@ npm run cypress:open
 
 ## Development Approach
 
-This project was developed through small, iterative deliveries, which allows for rapid adjustments to changing requirements and feedback in a real-world project. My approach was mainly to break down the larger project into smaller, manageable problems, tackling them one at a time. This strategy facilitates a smoother development process and enables me to maintain a high level of focus and efficiency.
+This project was developed through small, iterative deliveries, which allows for rapid adjustments to changing requirements and feedback in a real-world project. My approach was mainly to break down the larger project into smaller, manageable problems, addressing them one at a time. This strategy facilitates a smoother development process and enables me to maintain a high level of focus and efficiency.
 
 ## **Additional information and comments**
 
