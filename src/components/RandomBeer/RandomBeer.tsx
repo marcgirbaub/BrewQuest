@@ -1,8 +1,10 @@
 import { ReactElement } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { BeerStructure } from "../../types/types";
 import RandomBeerStyled from "./RandomBeerStyled";
 import beerImagePlaceholder from "../../assets/beer-placeholder.png";
+import { useFavorutiBeersStore } from "../../store/favouriteBeers/favouriteBeers";
 
 interface RandomBeerProps {
   beer: BeerStructure;
@@ -10,6 +12,10 @@ interface RandomBeerProps {
 
 const RandomBeer = ({ beer }: RandomBeerProps): ReactElement => {
   const { name, image_url, description, first_brewed, abv } = beer;
+
+  const { getIsFavouriteBeer, toggleFavouriteBeer } = useFavorutiBeersStore();
+
+  const isFavourite = getIsFavouriteBeer(beer.id);
 
   return (
     <RandomBeerStyled component="article" className="beer">
@@ -30,8 +36,16 @@ const RandomBeer = ({ beer }: RandomBeerProps): ReactElement => {
               <span>First brewed: {first_brewed}</span>
               <span>ABV: {abv}</span>
             </div>
-            <button>
-              <FavoriteIcon fontSize="large" color="primary" />
+            <button
+              onClick={() => {
+                toggleFavouriteBeer(beer);
+              }}
+            >
+              {isFavourite ? (
+                <FavoriteIcon fontSize="large" color="primary" />
+              ) : (
+                <FavoriteBorderIcon fontSize="large" color="primary" />
+              )}
             </button>
           </div>
         </div>
