@@ -20,7 +20,7 @@ const SearchContainer = (): ReactElement => {
     value: null,
   });
 
-  const [nameInputError, setNameInputError] = useState<string | null>(null);
+  const [inputError, setInputError] = useState<string>("");
 
   const queryParameters =
     filters.type === "name"
@@ -35,15 +35,13 @@ const SearchContainer = (): ReactElement => {
     const isValid = /^[a-zA-Z0-9- ]*$/.test(value);
 
     if (isValid) {
-      setNameInputError(null);
+      setInputError("");
       setFilters({
         type: "name",
         value: value,
       });
     } else {
-      setNameInputError(
-        "Only letters, numbers, spaces and hyphens are allowed.",
-      );
+      setInputError("Only letters, numbers, spaces and hyphens are allowed.");
     }
   };
 
@@ -56,8 +54,10 @@ const SearchContainer = (): ReactElement => {
     }
   };
 
-  const handleSwitchFilters = useCallback(
+  const handleFiltersChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputError("");
+
       setFilters({
         value: null,
         type: event.target.value as BeerFiltersType,
@@ -85,9 +85,10 @@ const SearchContainer = (): ReactElement => {
         handleNameChange={handleNameChange}
         handleDateChange={handleDateChange}
         handleSearch={handleSearch}
-        handleSwitchFilters={handleSwitchFilters}
+        handleFiltersChange={handleFiltersChange}
         isSubmitDisabled={areFiltersEmpty}
-        nameInputError={nameInputError}
+        inputError={inputError}
+        setInputError={setInputError}
       />
       {isLoadingOrFetching && <CircularProgress sx={{ alignSelf: "center" }} />}
       {isError && (

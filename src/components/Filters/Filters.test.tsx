@@ -8,7 +8,8 @@ describe("Given a Filters component", () => {
   const handleDateChange = vi.fn();
   const handleNameChange = vi.fn();
   const handleSearch = vi.fn();
-  const handleSwitchFilters = vi.fn();
+  const handleFiltersChange = vi.fn();
+  const setInputError = vi.fn();
   const searchButtonAriaLabel = "Press to search";
   const beerNameLabelText = "Beer name";
   const brewedBeforeLabelText = "Brewed before";
@@ -27,8 +28,9 @@ describe("Given a Filters component", () => {
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -50,8 +52,9 @@ describe("Given a Filters component", () => {
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -73,8 +76,9 @@ describe("Given a Filters component", () => {
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -96,8 +100,9 @@ describe("Given a Filters component", () => {
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -120,8 +125,9 @@ describe("Given a Filters component", () => {
             handleDateChange={handleDateChange}
             handleNameChange={handleNameChange}
             handleSearch={handleSearch}
-            handleSwitchFilters={handleSwitchFilters}
-            nameInputError={null}
+            handleFiltersChange={handleFiltersChange}
+            inputError={null}
+            setInputError={setInputError}
           />
         </LocalizationProvider>,
       );
@@ -144,8 +150,9 @@ describe("Given a Filters component", () => {
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -169,8 +176,9 @@ describe("Given a Filters component", () => {
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
