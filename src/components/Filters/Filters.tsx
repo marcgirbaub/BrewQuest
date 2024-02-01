@@ -46,11 +46,17 @@ const Filters = ({
   return (
     <FiltersStyled onSubmit={handleOnSubmit}>
       <RadioGroup row value={filters.type} onChange={handleFiltersChange}>
-        <FormControlLabel control={<Radio />} label="By name" value="name" />
+        <FormControlLabel
+          control={<Radio />}
+          label="By name"
+          value="name"
+          data-testid="by-name-radio"
+        />
         <FormControlLabel
           control={<Radio />}
           label="Brewed before"
           value="date"
+          data-testid="brewed-before-radio"
         />
       </RadioGroup>
       <div className="inputs">
@@ -74,6 +80,7 @@ const Filters = ({
             onChange={handleDateChange}
             className="inputs__date"
             slotProps={{ textField: { size: "small" } }}
+            data-testid="brewed-before-input"
             onError={(error) => {
               if (error) {
                 setInputError("Date is not valid");
