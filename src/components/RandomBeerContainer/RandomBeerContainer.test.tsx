@@ -93,7 +93,9 @@ describe("Given a RandomBeerContainer component", () => {
 
       render(<RandomBeerContainer />);
 
-      const button = screen.getByRole("button", { name: "Another Beer" });
+      const button = screen.getByRole("button", {
+        name: "Press to get another beer",
+      });
       fireEvent.click(button);
 
       const firstBeerNameElement = screen.queryByText(mockListOfBeers[0].name);

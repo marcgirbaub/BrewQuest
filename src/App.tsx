@@ -24,7 +24,7 @@ const App = (): ReactElement => {
           <Box
             sx={{
               maxWidth: breakpoints.xl,
-              padding: "2rem",
+              padding: "2rem 1rem",
               margin: "auto",
               marginTop: "70px",
               display: "flex",
