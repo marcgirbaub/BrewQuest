@@ -8,7 +8,8 @@ describe("Given a Filters component", () => {
   const handleDateChange = vi.fn();
   const handleNameChange = vi.fn();
   const handleSearch = vi.fn();
-  const handleSwitchFilters = vi.fn();
+  const handleFiltersChange = vi.fn();
+  const setInputError = vi.fn();
   const searchButtonAriaLabel = "Press to search";
   const beerNameLabelText = "Beer name";
   const brewedBeforeLabelText = "Brewed before";
@@ -23,12 +24,12 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -40,41 +41,18 @@ describe("Given a Filters component", () => {
     });
   });
 
-  describe("When it receives isLoadingOrFetching as true", () => {
-    test("Then it should disable the button", () => {
-      render(
-        <Filters
-          filters={{ type: "name", value: "" }}
-          isSubmitDisabled={false}
-          isLoadingOrFetching={true}
-          handleDateChange={handleDateChange}
-          handleNameChange={handleNameChange}
-          handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
-        />,
-      );
-
-      const buttonElement = screen.getByRole("button", {
-        name: searchButtonAriaLabel,
-      });
-
-      expect(buttonElement).toBeDisabled();
-    });
-  });
-
   describe("When it receives isSubmitDisabled as true", () => {
     test("Then it should disable the button", () => {
       render(
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={true}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -92,12 +70,12 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -116,12 +94,12 @@ describe("Given a Filters component", () => {
           <Filters
             filters={{ type: "date", value: "" }}
             isSubmitDisabled={false}
-            isLoadingOrFetching={false}
             handleDateChange={handleDateChange}
             handleNameChange={handleNameChange}
             handleSearch={handleSearch}
-            handleSwitchFilters={handleSwitchFilters}
-            nameInputError={null}
+            handleFiltersChange={handleFiltersChange}
+            inputError={null}
+            setInputError={setInputError}
           />
         </LocalizationProvider>,
       );
@@ -140,12 +118,12 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 
@@ -165,12 +143,12 @@ describe("Given a Filters component", () => {
         <Filters
           filters={{ type: "name", value: "" }}
           isSubmitDisabled={false}
-          isLoadingOrFetching={false}
           handleDateChange={handleDateChange}
           handleNameChange={handleNameChange}
           handleSearch={handleSearch}
-          handleSwitchFilters={handleSwitchFilters}
-          nameInputError={null}
+          handleFiltersChange={handleFiltersChange}
+          inputError={null}
+          setInputError={setInputError}
         />,
       );
 

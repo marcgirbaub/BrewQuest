@@ -1,8 +1,8 @@
 import { ReactElement, useCallback, useState } from "react";
 import dayjs from "dayjs";
+import { CircularProgress } from "@mui/material";
 import Filters from "../Filters/Filters";
 import useGetBeers from "../../hooks/useGetBeers/useGetBeers";
-import { CircularProgress } from "@mui/material";
 import SearchContainerStyled from "./SearchContainerStyled";
 import BeerList from "../BeerList/BeerList";
 import CustomAlert from "../CustomAlert/CustomAlert";
@@ -20,7 +20,7 @@ const SearchContainer = (): ReactElement => {
     value: null,
   });
 
-  const [nameInputError, setNameInputError] = useState<string | null>(null);
+  const [inputError, setInputError] = useState<string>("");
 
   const queryParameters =
     filters.type === "name"
@@ -35,15 +35,13 @@ const SearchContainer = (): ReactElement => {
     const isValid = /^[a-zA-Z0-9- ]*$/.test(value);
 
     if (isValid) {
-      setNameInputError(null);
+      setInputError("");
       setFilters({
         type: "name",
         value: value,
       });
     } else {
-      setNameInputError(
-        "Only letters, numbers, spaces and hyphens are allowed.",
-      );
+      setInputError("Only letters, numbers, spaces and hyphens are allowed.");
     }
   };
 
@@ -56,8 +54,10 @@ const SearchContainer = (): ReactElement => {
     }
   };
 
-  const handleSwitchFilters = useCallback(
+  const handleFiltersChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputError("");
+
       setFilters({
         value: null,
         type: event.target.value as BeerFiltersType,
@@ -71,23 +71,25 @@ const SearchContainer = (): ReactElement => {
   };
 
   const isLoadingOrFetching = isLoading || isFetching;
-  const areFiltersEmpty = !filters.value;
+
+  const isSubmitDisabled =
+    Boolean(inputError) || isLoadingOrFetching || !filters.value;
 
   const areNoBeersFound =
-    !isError && beers?.length === 0 && !areFiltersEmpty && !isLoadingOrFetching;
+    !isError && beers?.length === 0 && !isLoadingOrFetching;
 
   return (
     <SearchContainerStyled>
       <h2>Search</h2>
       <Filters
         filters={filters}
-        isLoadingOrFetching={isLoadingOrFetching}
         handleNameChange={handleNameChange}
         handleDateChange={handleDateChange}
         handleSearch={handleSearch}
-        handleSwitchFilters={handleSwitchFilters}
-        isSubmitDisabled={areFiltersEmpty}
-        nameInputError={nameInputError}
+        handleFiltersChange={handleFiltersChange}
+        isSubmitDisabled={isSubmitDisabled}
+        inputError={inputError}
+        setInputError={setInputError}
       />
       {isLoadingOrFetching && <CircularProgress sx={{ alignSelf: "center" }} />}
       {isError && (

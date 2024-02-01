@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import {
   Button,
   FormControlLabel,
@@ -12,44 +12,40 @@ import { BeerFiltersState } from "../SearchContainer/SearchContainer";
 
 interface FiltersProps {
   filters: BeerFiltersState;
-  isLoadingOrFetching?: boolean;
   handleNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleDateChange: (newValue: string | null) => void;
   handleSearch: () => void;
   isSubmitDisabled: boolean;
-  handleSwitchFilters: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  nameInputError: string | null;
+  handleFiltersChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputError: string | null;
+  setInputError: (value: string) => void;
 }
+
+//It could be argued that Filters component receives too many props, but, for the purpose of this project,
+//this was intentional to make it easier to test. In a bigger project, we would have to consider if the component needs
+//to be resused in other parts of the application, and if it does, we would refactor it to make it more reusable.
 
 const Filters = ({
   filters,
-  isLoadingOrFetching,
   handleNameChange,
   handleDateChange,
   handleSearch,
   isSubmitDisabled,
-  handleSwitchFilters,
-  nameInputError,
+  handleFiltersChange,
+  inputError,
+  setInputError,
 }: FiltersProps): ReactElement => {
-  const [isDateInputError, setIsDateInputError] = useState<boolean>(false);
-
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (isSubmitDisabled || nameInputError || isDateInputError) return;
+    if (isSubmitDisabled) return;
 
     handleSearch();
   };
 
-  const isSubmitButtonDisabled =
-    Boolean(nameInputError) ||
-    isLoadingOrFetching ||
-    isSubmitDisabled ||
-    isDateInputError;
-
   return (
     <FiltersStyled onSubmit={handleOnSubmit}>
-      <RadioGroup row value={filters.type} onChange={handleSwitchFilters}>
+      <RadioGroup row value={filters.type} onChange={handleFiltersChange}>
         <FormControlLabel control={<Radio />} label="By name" value="name" />
         <FormControlLabel
           control={<Radio />}
@@ -65,8 +61,8 @@ const Filters = ({
             placeholder="Search by beer name"
             className="inputs__name"
             onChange={handleNameChange}
-            error={Boolean(nameInputError)}
-            helperText={nameInputError}
+            error={Boolean(inputError)}
+            helperText={inputError}
             size="small"
             data-testid="beer-name-input"
           />
@@ -80,16 +76,16 @@ const Filters = ({
             slotProps={{ textField: { size: "small" } }}
             onError={(error) => {
               if (error) {
-                setIsDateInputError(true);
+                setInputError("Date is not valid");
               } else {
-                setIsDateInputError(false);
+                setInputError("");
               }
             }}
           />
         )}
         <Button
           variant="contained"
-          disabled={isSubmitButtonDisabled}
+          disabled={isSubmitDisabled}
           onClick={handleSearch}
           aria-label="Press to search"
           className="inputs__button"

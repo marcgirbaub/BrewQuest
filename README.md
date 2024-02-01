@@ -5,6 +5,8 @@ https://brewquest.vercel.app/
 
 If you prefer to run the application locally, please follow the below instructions.
 
+You will also find additional information and comments below.
+
 ## **Getting started**
 
 Node version: **18.15.0**
